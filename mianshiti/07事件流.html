@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            padding: 40px;
+        }
+        #div1 {
+            background: red;
+        }
+        #div2 {
+            background: green;
+        }
+        #div3 {
+            background: black;
+            position: absolute;
+            top: 200px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="div1">
+        <div id="div2">
+            <div id="div3"></div>
+        </div>
+    </div>
+    
+    <script>
+
+        /*
+            DOM
+                当一个元素触发了事件以后，会把这个事件通知（传递）给他的父级，事件冒泡
+
+                事件捕获
+        */
+    
+        var div1 = document.querySelector('#div1');
+        var div2 = document.querySelector('#div2');
+        var div3 = document.querySelector('#div3');
+
+        // div1.onclick = function() {
+        //     console.log('div1');
+        // }
+        // div2.onclick = function() {
+        //     console.log('div2');
+        // }
+        // div3.onclick = function() {
+        //     console.log('div3');
+        // }
+
+        div1.addEventListener('click', function() {
+            console.log('div1-1');
+        }, true);
+        div1.addEventListener('click', function() {
+            console.log('div1-2');
+        }, false);
+        
+        div2.addEventListener('click', function() {
+            console.log('div2');
+        }, true);
+        div3.addEventListener('click', function() {
+            console.log('div3');
+        }, true);
+
+    </script>
+
+</body>
+</html>

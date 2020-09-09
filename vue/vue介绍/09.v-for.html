@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="(list,index) in lists">{{list}}----{{index}}</li>
+        </ul>
+        <ul>
+            <li v-for="(value,key,index) in obj">{{value}}----{{key}}----{{index}}</li>
+        </ul>
+    </div>
+    <script src="../vue.js"></script>
+    <script>
+        var objkey = {
+            name:'xiaoxie',
+            age:18,
+            gender:'男'
+        }
+        console.log(Object.keys(objkey));//Object.keys取一个对象的键名，以数组的形态显示["name", "age", "gender"]
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                lists:['xiaoxie','laoyao','jiana'],
+                obj:{
+                    a:1,
+                    b:2,
+                    c:3
+                }
+            }
+        })
+    </script>
+</body>
+</html>

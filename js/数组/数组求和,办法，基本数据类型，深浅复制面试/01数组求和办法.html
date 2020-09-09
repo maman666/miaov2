@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+</head>
+<body>
+   <script type="text/javascript">
+        var arr = [10,20,30];
+        var num = 0;
+        var num1 = 0;
+        var num2 = 0;
+        var num3 = 0;
+        var num4 =0;
+        var num5 = 0;
+
+        for(var i=0;i<arr.length;i++){
+            num+=arr[i];
+        }
+        // console.log(num);
+        arr.forEach(item=>{//循环每一项
+            // console.log(item);
+            num1+=item;
+        });
+
+        arr.map(item=>{//映射,复制出来一个数组，长度是一样，但是内容是可以发生变化
+            num2+=item;
+        });
+
+        // console.log(num1,num2);
+        arr.filter(item=>{//过滤那些符合条件的数据，返回数组长度可以不一致，但是内容一致 用途：购物车，过滤那些已勾选的商品，选出进行支付
+
+            num3+=item;
+        });
+
+        arr.some(item=>{//只要一项符合条件就返回true，否则返回false
+            num4+=item;
+        });
+
+        arr.every(item=>{//要求每一项全部符合条件,才会执行下一次，否则返回false
+            return num5+=item;
+        });
+        // console.log(num1,num2,num3,num4,num5);
+
+        //arr.reduce(callback(accumuIator,currentValue,[currentIndex],[array]),[initialValue]) 对累加器和数组中的每个元素（从左到右）应用的一个函数
+        
+        //accumuIator 累加器累加回调的返回值
+        //currentValue 数组正在处理的元素
+        //[currentIndex] 数组正在处理的元素对应的下标 可选参数
+        //[array] 当前[currentIndex]的指向
+        
+
+        // arr.reduce((num,now)=>{//不给当前的num设定初始值的话，数组中对应下标为0的元素作为初始值
+        //     console.log(num,now)
+        // });
+        
+
+        // arr.reduce((num,now)=>{//初始值设为0
+        //    console.log(num,now);
+        //     // return num;
+        //     return num + now;
+
+        // },0);
+
+
+        // var num6 = arr.reduce((num,now)=>{//初始值设为0
+        //     return num + now;
+            
+        // },0);
+        // console.log(num6);
+
+
+
+
+        // ES6办法
+            // arr.find() //在数组中找到符合条件的第一个
+            var arr = [1,2,3,4,5]
+            var arr2 = arr.find((item,index)=>{
+                return item<3
+            })
+            console.log(arr2);//只有一个就是1
+
+   </script> 
+</body>
+</html>

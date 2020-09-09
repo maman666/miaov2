@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 模板 -->
+    <div id="demo">
+        {{message}}
+    </div>
+    <template id="mybox">
+        <div class="box">
+            outertemplate ：{{message}}
+            <input type="text" v-model="password" />
+        </div>
+    </template>
+
+    <script src="../vue.js"></script>
+    <script>
+        /**
+        * MVVM
+           * M：model数据层（处理数据）
+           * V: view视图层（展示数据）
+           * VM：viewModel（业务逻辑）
+            
+           * 指令（自定义的标签属性）
+
+           * 数据绑定
+               * 单向数据绑定
+                   * 双花括号：{{}}
+                   * v-bind:attr
+               * 双向数据绑定
+                   * v-model
+       */
+        /**
+            * 配置选项：实例化Vue时传入的参数
+                * el
+                * template
+                * render()
+                * data
+            * 指令
+                * v-bind:attr
+        */
+
+
+        //数据
+        let data = {
+            message: 'hello Vue'
+        }
+        //vm实例
+        let vm = new Vue({
+            el: '#demo',
+            data,
+            // template中的内容会覆盖挂载点el中的内容（el.outerHTML）
+            // template:`<div class="box">
+            //         template ：{{message}}
+            //         <input type="text" v-model="password"/>
+            //     </div>
+            //   
+
+            // template:'#mybox',
+
+            // 渲染函数
+            // render(createElement){
+            //     return createElement('div','test')
+            // }
+        })
+        // console.log(vm);
+        // console.dir(vm);
+    </script>
+</body>
+
+</html>

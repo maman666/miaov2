@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box{
+          width:200px;
+          height: 200px;
+          background: red;
+          color:#fff;
+          margin-bottom:50px;
+      }
+      .box2{
+          width:200px;
+          height: 200px;
+          background: red;
+          color:#fff;
+      }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- <input type="checkbox" v-model="checked">
+        <p v-if="checked">{{checked}}</p>
+        <p v-show="checked">{{checked}}</p> -->
+
+        <div class="box" @click='displaya'>
+            <h1 class="yiqi" v-show="show">编辑</h1>
+            <h1 class="yiqi show" v-show="none">完成</h1>
+        </div>
+        <div class="box2" v-show="show">结算</div>
+        <div class="box2" v-show="none">删除</div>
+    </div>
+    <script src="../vue.js"></script>
+    <script>
+
+        /*
+                 条件判断
+                     v-if
+                     语法：v-if="表达式"
+                     v-show
+                     语法：v-show="表达式"
+ 
+                 v-if
+                       根据表达式的值的真假条件渲染元素和移出元素	
+                 	
+                 v-show
+                     根据表达式的值的真假条件，切换元素的 CSS 属性 display属性
+ 
+                 	
+ 
+                 初始页面根据条件判断是否要渲染某一块的模板，使用v-if
+                 频繁的切换模板的显示隐藏，使用v-show
+ 
+ 
+             */
+        new Vue({
+            el: '#app',
+            data: {
+                show: true,
+                none: false,
+            },
+            methods: {
+                displaya() {
+                    this.show = !this.show
+                    this.none = !this.none;
+                }
+            }
+        })
+        // let vm = new Vue({
+        //     el: '#app',
+        //     data: {
+        //         checked: true
+        //     }
+        // })
+    </script>
+</body>
+
+</html>

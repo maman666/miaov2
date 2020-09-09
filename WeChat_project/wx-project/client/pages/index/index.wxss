@@ -1,0 +1,4 @@
+/**index.wxss**/
+.goToLog{
+  color: #58bc58;
+}

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <div>
+        div
+        <p></p>
+    </div>
+
+    <script>
+    
+        var div = document.querySelector('div');
+        // var p = document.querySelector('p');
+
+        // 当div触发了点击事件的时候，会调用div上的一个叫onclick的属性（方法）
+        // div.onclick = null; 默认
+        div.onclick = function(e) {
+            console.log(e);
+           
+        }
+        document.onclick=function(e){
+            console.log(e.clientX,e.clientY)
+        }
+        // div.onclick();
+
+    </script>
+</body>
+</html>

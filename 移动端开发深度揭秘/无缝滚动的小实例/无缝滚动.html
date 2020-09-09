@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"/ content="width=device-width,user-scalable=no">
+    <title>Document</title>
+    <script>
+        //获取html
+        var html = document.documentElement;
+        //设置html的字体大小 = 可视区的宽度 / 15
+        html.style.fontSize = html.clientWidth / 15 + 'px';
+        //阻止pc和浏览器默认行为。
+        document.addEventListener('touchstart', function (ev) {
+            ev.preventDefault();
+        });
+
+    // var html = document.documentElement;
+    //获取设备可视区的屏幕宽度
+    // var hWidth = html.getBoundingClientRect().width;
+    // html.style.fontSize=hWidth/15+'px';
+    </script>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        .wrap {
+            height: 4.68rem;
+            position: relative;
+        }
+
+        .list {
+            padding: 0;
+            margin: 0;
+            width: 400%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            list-style: none;
+        }
+
+        .list li {
+            float: left;
+            width: 15rem;
+        }
+
+        .list li img {
+            width: 15rem;
+            display: block;
+        }
+
+        nav {
+            width: 15rem;
+            height: 0.4rem;
+            position: absolute;
+            bottom: 0.2rem;
+            z-index: 1;
+            text-align: center;
+        }
+
+        nav a {
+            width: 0.6rem;
+            height: 0.6rem;
+            display: inline-block;
+            background: red;
+            border-radius: 50%;
+            vertical-align: top;
+        }
+
+        nav .active {
+            background: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="wrap">
+        <ul class="list">
+            <li>
+                <img src="img/img.jpg" alt="" />
+            </li>
+            <li>
+                <img src="img/img2.jpg" alt="" />
+            </li>
+            <li>
+                <img src="img/img3.jpg" alt="" />
+            </li>
+            <li>
+                <img src="img/img4.jpg" alt="" />
+            </li>
+        </ul>
+        <nav>
+            <a href="javascript:;" class="active"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+        </nav>
+    </section>
+    <script>
+        var wrap = document.querySelector('.wrap'),
+            list = document.querySelector('.list'),
+            a = document.querySelectorAll('a'),
+            disX = 0,//按下坐标位置
+            listL = 0,//当前按下list的left值
+            w = wrap.clientWidth;//一张图片的宽度(当前可视区的宽度)
+
+        list.addEventListener('touchstart', start);
+        list.addEventListener('touchmove', move);
+        list.addEventListener('touchend', end);
+
+        function start(ev) {
+            var e = ev.changedTouches[0];
+            //pageX() 属性是鼠标指针的位置，相对于文档的左边缘。
+            disX = e.pageX;
+            list.style.transition = 'none';
+            listL = this.offsetLeft;
+        }
+
+        function move(ev) {
+            var e = ev.changedTouches[0];
+            list.style.left = (e.pageX - disX) + listL + 'px';
+        }
+
+        function end() {
+            // var num =list.offsetLeft/w;
+            var num = Math.round(list.offsetLeft / w);
+            console.log(num)
+            list.style.transition='.5s';
+            list.style.left = num * w + 'px';
+        }
+    </script>
+</body>
+
+</html>

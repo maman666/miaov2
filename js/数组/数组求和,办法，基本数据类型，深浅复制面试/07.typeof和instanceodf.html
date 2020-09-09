@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var a = 'miaov';
+        var b = 123;
+        var c = null;
+        var d = true;
+        var e = undefined;
+        var f = Symbol('miaov');
+
+        var arr = []
+        var obj = {}
+
+        // console.log(typeof a)
+        // console.log(typeof b)
+        // console.log(typeof c)
+        // console.log(typeof d)
+        // console.log(typeof e)
+        // console.log(typeof f)
+
+
+        // console.log(typeof arr)
+        // console.log(typeof obj)
+
+        console.log(obj instanceof Array)//用这种去判断 返回true 或 false
+        console.log(obj instanceof Object)//打印出来是一个对象
+        console.log(arr instanceof Object)//打印出来也是一个obj
+
+
+
+        /*
+            instanceof
+
+            object(检测对象) instanceof constructor(构造函数)
+
+        */
+
+        var book = {
+            name:"妙味修炼之道",
+            picture:{
+                small:'../这是小的',
+                middle:'../这是中等的',
+                large:'../这是大的',
+            },
+            author:['作者1','作者2'],
+            fun:function(){
+
+            }
+        }
+
+
+        function copy(obj){
+            
+            var vv = obj instanceof Array ? []:{}; 
+            for(var v in obj){
+
+                if(typeof obj[v] == 'object'){
+                    vv[v] = copy(obj[v])
+                }else{
+                    vv[v] = obj[v]
+                }
+                
+            }
+            return vv;
+        }
+
+
+        var objtwo = copy(book)
+
+        console.log(objtwo)
+    </script>
+</body>
+</html>

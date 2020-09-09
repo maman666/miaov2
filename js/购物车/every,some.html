@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="checkbox" checked/>
+    <input type="checkbox" />
+    <input type="checkbox"/>
+    <script>
+        /*
+            every方法
+            用于循环数组的每一项，在指定的函数做判断，如果全部符合 返回true 有一项不符合返回false
+
+            some方法 只要有一项符合 就返回true 全部不符合 才返回false
+        */
+        var inputs = document.querySelectorAll('input');
+        console.log(inputs);
+        //出来是一个伪数组 先要把他转为数组 es6 扩展运算符
+        var ischeck = [...inputs].every(item=>{
+            return item.checked;
+        })
+
+        var ischeck2 = [...inputs].some(item=>item.checked);
+
+        console.log(ischeck2)
+    </script>
+</body>
+</html>

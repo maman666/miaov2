@@ -1,0 +1,30 @@
+{
+  "name": "vue-toast-demo",
+  "version": "1.0.0",
+  "description": "a toast plugin for mobile",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "toast",
+    "vue-toast"
+  ],
+  "author": "xiaoxie",
+  "license": "ISC",
+  "dependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.6",
+    "babel-preset-env": "^1.7.0",
+    "css-loader": "^3.0.0",
+    "node-sass": "^4.12.0",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
+    "vue-loader": "^15.7.0",
+    "vue-template-compiler": "^2.6.10",
+    "webpack": "^3.1.0"
+  },
+  "devDependencies": {
+    "webpack-cli": "^3.3.5"
+  }
+}

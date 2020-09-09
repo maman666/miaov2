@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    <div id="div1">666</div>
+    <script type="text/javascript">
+    //ie下会引发内存泄漏(一直开着浏览器的时候不会释放内存(造成内存泄漏),关闭的时候才会)
+    window.onload = function(){
+        var oDiv = document.getElementById('div1');
+        oDiv.onclick = function(){
+            alert(oDiv.id); //获取这个元素oDiv 这个元素绑定事件,获取这个元素的属性 ie下会引发内存泄漏
+        }
+        window.onunload = function(){
+            oDiv.onclick = null; //事件结束把他设置为空
+        }
+    }
+    </script>
+
+    </body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ES6-2Demo演示</title>
+</head>
+<body>
+<h2>
+  ES6-2Demo演示
+</h2>
+<script>
+  function sum(x,y,z){
+    let total = 0;
+    if(x)total+=x;
+    if(y)total+=y;
+    if(z)total+=z;
+
+    console.log(`total:${total}`)
+  }
+
+  sum(5,"",9)
+
+  function sum2(...m){//...扩展运算符 不太确定 变化的 动态的 给他扩展出来 Rest参数和扩展
+    let total = 0;
+    for(var i of m){
+      total += i;
+    }
+    console.log(`total:${total}`)
+  }
+
+  sum2(4,8,9,10);
+
+  let sum3 = (...m)=>{
+    let total = 0;
+    for(var i of m){
+      total += i;
+    }
+    console.log(`total:${total}`)
+  };
+
+  sum3(4,8,9,10);
+
+  var [x,y] = [4,8]//一以对应
+
+  console.log(...[4,8]);//...跟数组放在一起 就会把数组的每一项分解出来 称为数组的扩展 //4 8
+
+  let arr1 = [1,3];let arr2 = [4,8];
+  console.log("concat:"+arr1.concat(arr2));
+
+//  [...arr1,...arr2] //[1,3,4,8]
+
+//  var [x,y] = [4,8];
+
+  var [x,...y] = [4,8,10,30]// 数组的解构 ..y意义就变了 可以容纳很多参数 就像动态变量储存器 控制台输入y可以测试 p[8,10,30]
+
+  let [a,b,c] = "ES6"; //就会把字符串拆成每个变量 对号入座 这就是解构  a=E  b=S  c=6 
+
+  let xy = [...'ES6'];// 就会把字符串'ES6'给扩展成 形式["E", "S", "6"]
+
+
+</script>
+</body>
+</html>

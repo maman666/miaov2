@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="format-detection" content="telephone=no, email=no" />
+    <title>Document</title>
+    <style>
+        body{
+            font-family: Helvetica;
+        }
+         body *{
+             -webkit-text-size-adjust: 100%;
+             -webkit-user-select: none; /*在事件章节 去兼容安卓*/
+         }
+        a,input,button{
+            -webkit-tap-highlight-color:rgba(255,255,0,.5)
+        }
+        /* ios下面圆角 */
+        input,button{
+            -webkit-appearance:none;
+            border-radius:0; 
+        }
+    </style>
+</head>
+    <!-- 默认样式
+        清除点击阴影：-webkit-tap-highlight-color:rgba(255,255,0,.5)
+        清除按钮圆角：-webkit-appearance
+        默认字体设置：Helvetica
+        禁止文字缩放：-webkit-text-size-adjust
+        选中文字设置：-webkit-user-select
+    -->
+<body>
+    <a href="http://miaov.com">妙味课堂</a>
+    <p>妙味课堂666</p>
+    <input type="button" value="按钮">
+</body>
+</html>

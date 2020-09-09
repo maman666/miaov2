@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+
+<body>
+    <div id='app'>
+        <template v-if='condition.length'>
+            <div>
+                <span>已选中:<span>
+                        <span v-for='(item,index) in condition' class='active'>{{item.name}}&nbsp;|&nbsp;</span>
+            </div>
+        </template>
+        <template v-if='category.length'>
+            <div class='nav' v-for='(items,index) in category'>
+                <div class='mutil-query-title' v-if='items.name' :key="items.id">{{items.name}}<span
+                        style='margin-left: 20px;' @click='allIn(index)'>全选</span>|<span
+                        @click='remove(index)'>清空</span></div>
+                <ol v-if='items.items.length'>
+                    <li v-for='(item,key) in items.items'>
+                        <span :class="{'active':item.active}" @click='handle(index,key)'
+                            :key='item.id'>{{item.name}}</span>
+                    </li>
+                </ol>
+            </div>
+        </template>
+    </div>
+<script>
+    var list={
+	category:[
+		{
+			name:'品牌',
+			items:[
+			{
+				name:'联想',
+				active: false
+			},
+			{
+				name:'小米',
+				active: false
+			},
+			{
+				name:'苹果',
+				active: false
+			},
+			{
+				name:'东芝',
+				active: false
+			}
+			]
+		},
+		{
+			name:'CPU',
+			items:[
+			{
+				name:'intel i7 8700K',
+				active: false
+			},
+			{
+				name:'intel i7 7700K',
+				active: false
+			},
+			{
+				name:'intel i9 9270K',
+				active: false
+			},
+			{
+				name:'intel i7 8700',
+				active: false
+			},
+			{
+				name:'AMD 1600X',
+				active: false
+			
+			}
+			]
+		},
+		{
+			name:'内存',
+			items:[
+			{
+				name:'七彩虹8G',
+				active: false
+			},
+			{
+				name:'七彩虹16G',
+				active: false
+			},
+			{
+				name:'金士顿8G',
+				active: false
+			},
+			{
+				name:'金士顿16G',
+				active: false
+			}
+			]
+		},
+		{
+			name:'显卡',
+			items:[
+			{
+				name:'NVIDIA 1060 8G',
+				active: false
+			},
+			{
+				name:'NVIDIA 1080Ti 16G',
+				active: false
+			},
+			{
+				name:'NVIDIA 1080 8G',
+				active: false
+			},
+			{
+				name:'NVIDIA 1060Ti 16G',
+				active: false
+			}
+			]
+		}
+	],
+	condition:[
+	]
+};
+var count=0;
+var app =new Vue({
+	el:'#app',
+	data:list,
+	methods:{
+		handle:function(index,key){
+			var item=this.category[index].items;
+			item.filter(function(v,i){
+				if(i==key){
+					v.active=true;			
+					this.list.condition.filter(function(v2,i){
+						if(v.name==v2.name){
+							this.list.condition.splice(i,1);
+							count--;
+						}
+					});					
+					Vue.set(this.list.condition,count++,v);
+				}
+			});
+			
+		},
+		remove:function(index){
+			var item=this.category[index].items;
+			item.filter(function (v1,key) {
+				v1.active=false;
+				this.list.condition.filter(function(v2,i){
+					if(v1.name==v2.name){
+						this.list.condition.splice(i,1);
+						count--;
+					}
+				});
+			});
+		},
+		allIn:function(index){
+			var item=this.category[index].items;
+			item.filter(function (v,key) {
+				v.active=true;
+				this.list.condition.filter(function(v2,i){
+					if(v.name==v2.name){
+						this.list.condition.splice(i,1);
+						count--;
+					}
+				});					
+				Vue.set(this.list.condition,count++,v);
+			});			
+		}
+	}
+
+});
+
+</script>
+</body>
+
+</html>

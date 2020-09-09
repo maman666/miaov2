@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    <script type="text/javascript">
+    window.onload = function(){
+        var obj = {
+            a:{b:10}
+        }
+
+
+        //浅拷贝
+        // function copy(obj){ 
+        //     var newArr = [];
+        //     for(var attr in obj){
+
+        //         newArr[attr] = obj[attr]
+
+        //     }
+
+        //     return newArr;
+        // }
+        // 
+        //深拷贝 递归(自己调用自己)
+        function deep(obj){ 
+            if(typeof obj !='object'){
+                console.trace();//打印进程
+                return obj;
+            }
+            var newArr = [];
+            for(var attr in obj){
+
+                newArr[attr] = deep(obj[attr])
+
+            }
+            console.log('newArr:',newArr)
+            return newArr;
+        }
+        
+
+        var obj2 = deep(obj);
+        // console.log('obj2:',obj2)
+        // console.log(obj2.a.b)
+        obj2.a.b = 20;
+        console.log(obj.a.b);//10
+    }
+    </script>
+    </body>
+</html>

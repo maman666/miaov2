@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    li {
+        display: inline-block;
+        width: 100px;
+        height: 60px;
+        background: #ccc;
+    }
+
+    li.active {
+        background: red;
+    }
+</style>
+
+<body>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</body>
+<script>
+    var lis = document.querySelectorAll('li');
+    var n = 3;
+    /*
+        
+            核心：哪些li有active，哪些li没有active
+                从0开始到？是有active样式的
+        */
+    for (var i = 0; i < lis.length; i++) {
+        lis[i].index = i;
+        lis[i].onmouseover = function () {
+            // 从0到鼠标移入的这个li
+            todo(this.index);
+        }
+        lis[i].onmouseout = function () {
+            // 从0到鼠标移入的这个li
+            todo(n);
+        }
+        lis[i].onclick=function(){
+            n=this.index
+        }
+    }
+
+
+    function todo(v) {
+        for (var i = 0; i < lis.length; i++) {
+            if (i <= v) {
+                lis[i].classList.add('active');
+            } else {
+                lis[i].classList.remove('active');
+            }
+        }
+    }
+</script>
+
+</html>

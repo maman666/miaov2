@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no" />
+    <title>Document</title>
+    <script>
+        (function () {
+            var html = document.documentElement;
+            var hWidth = html.getBoundingClientRect().width;
+            console.log(hWidth)
+            html.style.fontSize = hWidth / 15 + "px";
+            //1rem=50px
+        })()
+    </script>
+    <style>
+
+        /* 移动端精灵图的制作 
+            1.在ps ctrl+c复制 ctrl+n新建 ctrl+v粘贴 
+            2.ctrl+alt+c（调整画布的大小） 定位：设在左上角  
+            3.宽度，高度（86，85）放大成（90，90）因为用rem进行计算，把背景图放大几像素，
+                有可能出现计算偏差可能图片放大就会看到另外一张图片，留下一条缝 防止看到下一张图片
+            4.一行5个图片 宽度为：450  有两行 高度：180
+            5.把背景图层删掉（变成透明背景）
+            6.把所有图拉辅助线 大小就是放大后的像素 （90，90）辅助线
+        
+        */
+
+        body,
+        body * {
+            -webkit-text-size-adjust: 100%;
+        }
+
+        body,
+        h1 {
+            margin: 0;
+            font-family: Helvetica;
+        }
+
+        a,
+        input,
+        button {
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+            -webkit-appearance: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .rows {
+            display: -webkit-box;
+            display: flex;
+            padding:0.4rem 0.5rem 0;
+        }
+
+        .rows>div {
+            -webkit-box-flex: 1;
+            flex-grow: 1;
+            width: 0px;
+        }
+
+        .rows>div a {
+            font-size: 0.44rem;
+            color: #666666;
+            text-align: center;
+            line-height: 1.04rem;
+            display: block;
+        }
+
+        .rows>div a:before {
+            content: "";
+            display: block;
+            margin: 0 auto;
+            width: 1.72rem;
+            height: 1.7rem;
+            background-image: url(icon.png);
+            /* 大小就是精灵图尺寸的大小 */
+            background-size: 9rem 3.6rem;
+        }
+
+      
+        .rows>div:nth-of-type(2) a:before {
+            background-position: -1.8rem 0;
+        }
+
+        .rows>div:nth-of-type(3) a:before {
+            background-position: -3.6rem 0;
+        }
+
+        .rows>div:nth-of-type(4) a:before {
+            background-position: -5.4rem 0;
+        }
+
+        .rows>div:nth-of-type(5) a:before {
+            background-position: -7.2rem 0;
+        }
+        .rows:nth-of-type(2)>div:nth-of-type(1) a:before {
+            background-position: 0 -1.8rem;
+        }
+        .rows:nth-of-type(2)>div:nth-of-type(2) a:before {
+            background-position: -1.8rem -1.8rem;
+        }
+        .rows:nth-of-type(2)>div:nth-of-type(3) a:before {
+            background-position: -3.6rem -1.8rem;
+        }
+        .rows:nth-of-type(2)>div:nth-of-type(4) a:before {
+            background-position: -5.4rem -1.8rem;
+        }
+        .rows:nth-of-type(2)>div:nth-of-type(5) a:before {
+            background-position: -7.2rem -1.8rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="rows">
+        <div>
+            <a href="javascript:;">天猫</a>
+        </div>
+        <div>
+            <a href="javascript:;">聚划算</a>
+        </div>
+        <div>
+            <a href="javascript:;">天猫国际</a>
+        </div>
+        <div>
+            <a href="javascript:;">外卖</a>
+        </div>
+        <div>
+            <a href="javascript:;">天猫超市</a>
+        </div>
+    </div>
+    <div class="rows">
+        <div>
+            <a href="javascript:;">充值中心</a>
+        </div>
+        <div>
+            <a href="javascript:;">飞猪旅行</a>
+        </div>
+        <div>
+            <a href="javascript:;">领金币</a>
+        </div>
+        <div>
+            <a href="javascript:;">到家</a>
+        </div>
+        <div>
+            <a href="javascript:;">分类</a>
+        </div>
+    </div>
+</body>
+
+</html>

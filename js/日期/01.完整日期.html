@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            var oBody = document.body;
+            setInterval(fnTime,1000);//调用只需要函数名
+            fnTime();
+            function fnTime(){
+                var mydate = new Date();
+                var year = mydate.getFullYear();
+                var month = mydate.getMonth() + 1;
+                var day = mydate.getDate();
+                var week = mydate.getDay();
+                var hours = mydate.getHours();
+                var min = mydate.getMinutes();
+                var sec = mydate.getSeconds();
+
+                if (week === 0) week = '星期日';
+                if (week === 1) week = '星期一';
+                if (week === 2) week = '星期二';
+                if (week === 3) week = '星期三';
+                if (week === 4) week = '星期四';
+                if (week === 5) week = '星期五';
+                if (week === 6) week = '星期六';
+                var str = '';
+                str = year + '年' + twoNum(month) + '月' + twoNum(day) + '日' + ' ' + week + ' ' + twoNum(hours) + ':' + twoNum(min) + ':' + twoNum(sec);
+
+                oBody.innerHTML = str;
+                // console.log(year, month, day, week, hours, min, sec);
+            }
+            
+        });
+        // console.log(twoNum(5))
+        // console.log(twoNum(15))
+        function twoNum(n){
+            return n<10 ? '0'+n : ''+n;
+        }
+    </script>
+</body>
+
+</html>

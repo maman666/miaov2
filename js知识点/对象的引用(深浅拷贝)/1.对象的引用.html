@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    <script type="text/javascript">
+    window.onload = function(){
+        /*
+        * 基本数据类型:就是赋值的关系,另一个值的改变不会影响上一个值
+        *
+        * 对象类型:就是引用关系(赋址关系),另一个值的改变会影响上一个值
+         */
+        // var a =1;
+        // var b =a;
+        // b = 2;
+        // console.log(b);//2
+        // console.log(a);//1
+
+
+        var a = [3,4,5];
+        var b = a;
+        b.push(6);
+        console.log(a);//[3, 4, 5, 6]
+        console.log(b);//[3, 4, 5, 6]
+    }
+    </script>
+    </body>
+</html>

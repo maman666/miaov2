@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-model="message" />
+        <p>{{message}}</p>
+        <p>{{message.split('').reverse().join('')}}</p>
+        <p>{{reverserMessage}}</p>
+        <p>{{list.map(item=>item*2).filter(item=>item<10)}}</p> </div> <script src="../vue.js">
+        </script>
+                <script>
+                    // 在模板中把数组每一项x2，并且过滤小于10的
+
+                    /*
+                        计算属性
+                            作用：把对处理数据的逻辑抽离在计算属性中，使得模板更加轻量易读
+        
+                            定义计算属性
+                                computed : {
+        	
+                                }
+                    */
+                    new Vue({
+                        el: '#app',
+                        data: {
+                            message: 'miaovketang',
+                            list: [1, 2, 3, 4]
+                        },
+                        computed: {// 计算属性挂载实例上
+                            // 计算属性对应的函数this都指向实例
+                            // 计算属性会把结果缓存，可在模板中重复使用
+                            // 计算属性中依赖了data中的数据，data中的数据发生变化，计算属性会重新计算s
+                            reverserMessage() {
+                                console.log(this.message);
+                                console.log('我执行了一次');
+                                return this.message.split('').reverse().join('')
+                            }
+                        }
+                    })
+                    //console.log(vm);
+                </script>
+</body>
+
+</html>

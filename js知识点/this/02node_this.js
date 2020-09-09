@@ -1,0 +1,1 @@
+console.log(this===module.exports);//在node的环境中this才指向gobal

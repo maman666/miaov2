@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <style type="text/css">
+    *{margin:0;padding:0;}
+    #box{width: 200px;height: 200px;position:absolute;background: red;top:50px;}
+    </style>
+    <body>
+    <div id="box"></div>
+    </body>
+    <script type="text/javascript">
+    var box = document.getElementById('box');
+
+    move(box,'top',100,1000,function(){
+        
+    })
+    function move(obj,attr,target,duration,callback){
+                var b = parseFloat(getComputedStyle(obj)[attr]);
+             
+                var c = target - b;
+                  
+                var d = duration;
+                var now = new Date().getTime();
+                
+                obj[attr] = setInterval(function(){
+                    var t = new Date().getTime() - now;
+                    var value = b + c / d * t;
+                    obj.style[attr] = value+"px";
+                    if(t >= d){
+                        clearInterval(obj[attr]);
+                        obj.style[attr] = target+"px";
+                        callback&&callback();//当到达目标值的时候执行回调函数
+                    }
+                },30)
+            }
+    
+    </script>
+</html>

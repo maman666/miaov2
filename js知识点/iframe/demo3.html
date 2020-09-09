@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    <script type="text/javascript">
+    window.onload = function(){
+        var oiframe = document.createElement('iframe');
+        oiframe.src = 'iframe1.html';
+        document.body.appendChild(oiframe);
+        // oiframe.onload = function(){
+        //     alert(123)
+        // }
+        //ie11以下 事件绑定
+        oiframe.attachEvent("onload", function(){
+            alert(123)
+        })
+        
+    }
+    </script>
+    </body>
+</html>

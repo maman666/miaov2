@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="../vue.js"></script>
+    <div id="app">
+        <!-- <input type="text" v-model="message"> -->
+        <input type="password" id="pass" value="123">
+        <!-- <p>{{message}}</p> -->
+        <!-- <p v-text="message"></p> -->
+        <p v-html="message"></p>
+    </div>
+    <script>
+        var message = `<div>hello</div><img src="./a.jpg onerror="console.log(document.getElementById('pass').value);"/>`;
+        // setTimeout(function () {
+        //     new Vue({
+        //         el: '#app',
+        //         data: {
+        //             message
+        //         }
+        //     })
+        // },2000)
+        let vm = new Vue({
+                el: '#app',
+                data: {
+                    message
+                }
+            })
+    </script>
+</body>
+
+</html>

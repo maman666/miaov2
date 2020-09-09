@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h1>{{movieName}}</h1>
+        {{zhuyan}}<br/>
+        {{price}}
+    </div>
+    <script src="../vue.js"></script>
+    <script>
+        /**
+            * 响应式属性
+            * Vue.set(target,key,val) / vm.$set()
+        */
+         /**
+            * 06实例属性与方法
+            * vm.$data === vm._data
+            * vm.$el === el节点
+            * vm.$set() ===  Vue.set()
+                this.$set()
+        */
+        // 手动挂载
+       // vm.$mount('#app') 比如页面需要什么时候出来
+
+        let vm = new Vue({
+            el:'#app',
+            data:{
+                movieName:'惊奇队长',
+                zhuyan:['大妈','jingjing','lemon'],
+                price:{
+                    guangzhou:60,
+                    beijing:80,
+                    shanghai:100
+                }
+            }
+        })
+        vm.$set(vm.price,'laoxie',666)
+    
+    </script>
+</body>
+</html>

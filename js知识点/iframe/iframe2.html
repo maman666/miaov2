@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    <input type="button" value="改变" id="input2" />
+    <script type="text/javascript"> 
+    var oInput = document.getElementById('input2');
+    oInput.onclick = function(){
+        window.parent.document.getElementById('div2').style.color = 'red';//改变另外一个父窗口的字体颜色
+        window.top.document.getElementById('div2').style.color = 'red'; //top顶层元素
+
+    }
+    </script>
+    </body>
+</html>

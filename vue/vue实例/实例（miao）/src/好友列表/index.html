@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body,
+			ul,
+			li,
+			h2 {
+				margin: 0;
+				padding: 0;
+			}
+			
+			li {
+				list-style: none;
+			}
+			.list>div {
+				margin-bottom: 10px;
+			}
+			.list .show {
+				display: block;
+			}
+		</style>
+		<link rel="stylesheet" type="text/css" href="./css/qq.css" />
+		<script src="../lib/vue.js"></script>
+		<script>
+			let data = [
+				{
+					title: '品牌',
+					list: ["苹果", "小米", "锤子", "魅族", "华为", "三星", "OPPO", "vivo", "乐视", "360", "中兴", "索尼"]
+				},
+				{
+					title: '尺寸',
+					list: ["3.0英寸以下", "3.0-3.9英寸", "4.0-4.5英寸", "4.6-4.9英寸", "5.0-5.5英寸", "6.0英寸以上"]
+				},
+				{
+					title: '系统',
+					list: ["安卓", "(", "Android", ")", "苹果", "(", "IOS", ")", "微软", "(", "WindowsPhone", ")", "无", "其他"]
+				},
+				{
+					title: '网络',
+					list: ["联通3G", "双卡单4G", "双卡双4G", "联通4G", "电信4G", "移动4G"]
+				}
+			]
+		</script>
+	</head>
+
+	<body onselectstart="return false;">
+		<div class="wrap" id="app">
+			<div class="list">
+				<div v-for="(item,i) in qq">
+					<h2 :class="{active:i===index}" @click="showListHandle(i)"><span></span>{{item.title}}</h2>
+					<ul :class="{show:i===index}">
+						<li v-for="option in item.list">{{option}}</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<script>
+
+			new Vue({
+				el: '#app',
+				data:{
+					qq:data,
+					index:''//不能0 1 2 3 这样打开页面就有一个显示出来
+				},
+				methods: {
+					showListHandle(i){
+						this.index = this.index===i?'':i
+					}
+				}
+			})
+
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,39 @@
+<!--index.wxml-->
+<view class="container">
+  <view bind:tap="goToLog" class="goToLog">点我跳到日志页面</view>
+
+  <!-- 自定义组件 -->
+  <!-- 自定义属性使用以 - 使用 定义驼峰命名 -->
+  <magic-number now-in="index" bind:getMagicNumber="getMagicNumber"></magic-number>
+  <view>{{num}}</view>
+
+  <!-- 用户授权信息 -->
+  <button
+   open-type='getUserInfo'
+   bindgetuserinfo='onGetUserInfo'
+   >获取用户信息</button>
+   <!-- 普通的button事件 -->
+   <button bind:tap="onTry">普通获取用户信息</button>
+
+   <!-- 地理位置授权 -->
+   <button bind:tap="onAuthLocation">授权位置</button>
+
+   <!-- 获取位置 -->
+    <button bind:tap="onGetLocation">获取位置</button>
+
+    <!-- 获取授权相关信息 -->
+    <button bind:tap="onGetSetting">获取授权相关信息</button>
+
+    <!-- 手动打开授权信息面板 -->
+    <button bind:tap="onGotoSetting">手动打开授权信息面板</button>
+
+    <!-- 数据缓存 -->
+    <button bind:tap="onCache">数据缓存</button>
+
+    <!-- 数据请求koa-->
+    <button bind:tap="onReq">数据请求</button>
+
+    <!-- 数据请求2express-->
+    <button bind:tap="onReq2">数据请求2</button>
+
+</view>

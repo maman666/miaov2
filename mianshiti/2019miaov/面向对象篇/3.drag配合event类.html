@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Document</title>
+<style>
+    #box {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100px;
+        height: 100px;
+        background: red;
+    }
+</style>
+<script src="js/event.js"></script>
+</head>
+<body>
+    <div id="box"></div>
+<script>
+/*
+    拖拽：
+        1. 鼠标摁下可以开始拖拽
+        2. 记录摁下时的鼠标位置 和 元素位置
+        3. 移动后获取到鼠标的新位置
+        4. 用鼠标新位置 - 摁下时的鼠标位置 = 鼠标移动距离
+        5. 元素当前位置 = 鼠标移动距离 + 摁下时元素位置
+*/    
+class Drag extends Event {
+    // 构造函数
+    constructor(el){
+        super();
+        this.el = el;
+        // 鼠标摁下时的元素的位置
+        this.startOffset = {};
+        // 鼠标摁下时鼠标的坐标
+        this.startPoint = {};
+        let move = (e)=>{
+            this.move(e);
+        };
+        let end = (e)=>{
+           document.removeEventListener("mousemove",move);
+           document.removeEventListener("mouseup",end); 
+           this.end(e);
+        };
+        el.addEventListener("mousedown",(e)=>{
+           this.start(e);
+           document.addEventListener("mousemove",move);
+           document.addEventListener("mouseup",end);
+        });
+    }
+    // 摁下时的处理函数
+    start(e){
+        let {el} = this;
+        this.startOffset = {
+            x: el.offsetLeft,
+            y: el.offsetTop
+        };
+        this.startPoint = {
+            x: e.clientX,
+            y:e.clientY
+        };
+        this.trigger("dragstart",e,el);
+    }
+    //移动时的处理函数
+    move(e){
+        let {el,startOffset,startPoint} = this;
+        let nowPoint = {
+            x: e.clientX,
+            y: e.clientY
+        };
+        let dis = {
+            x: nowPoint.x - startPoint.x,
+            y: nowPoint.y - startPoint.y
+        }
+        el.style.left = dis.x + startOffset.x + "px";
+        el.style.top = dis.y + startOffset.y + "px";
+        this.trigger("drag",e,el);
+    }
+    end(e){
+        this.trigger("dragend",e,this.el);
+    }
+}
+(function(){
+    let box = document.querySelector("#box");
+    let dragBox = new Drag(box);
+    // box.addEventListener("click",function(){
+    //     alert(1);
+    // },{
+    //     once:true
+    // })
+    console.log(dragBox);
+    dragBox.on("dragstart",function(e){
+        //console.log(e,this);
+        //console.log("开始拖拽");
+        this.style.background = "yellow";
+    });
+    dragBox.on("dragend",function(e){
+        //console.log("结束拖拽");
+        this.style.background = "red";
+    });
+    dragBox.once("drag",function(){
+        console.log("drag");
+    })
+})()   
+</script>
+</body>
+</html>

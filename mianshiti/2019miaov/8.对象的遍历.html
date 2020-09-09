@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            for...in
+            Object.defineProperty()定义属性
+            对象描述符
+                configurable 总开关
+                enumerable 可枚举性
+            数据描述符
+                value 值
+                writable 只读性
+            存取描述符
+                get
+                set
+        */
+
+        let obj = {
+            x:1
+        }
+        Object.defineProperty(obj,'y',{
+            value:2,
+            writable:true,
+            enumerable:true
+        })
+        obj.y=1000;
+        console.log(obj);
+        for(let i in obj){
+            console.log(i)
+        }
+
+    </script>
+</body>
+</html>

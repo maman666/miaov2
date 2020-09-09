@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <style>
+        input{
+            /*border:none;*/ /*边框去掉*/
+            outline:none;  /*外边框去掉*/
+            padding:0;
+            display:inline-block ;
+            width:250px;
+            height:60px;
+            line-height:60px;
+            font-size: 30px; /*控制输入框字体地大小*/
+
+        }
+        input[type=text]:focus{
+            /*border: 1px solid #AFECAB;*/ /*重新定义边框颜色*/
+            outline: 1px solid #AFECAB;/*聚焦改变外边框颜色*/
+        }
+        input::-webkit-input-placeholder{
+            color:#999;  /*改变占位符placeholder地颜色*/
+        }
+    </style>
+</head>
+<body>
+    <input type="text" placeholder="请输入手机号码"/>
+</body>

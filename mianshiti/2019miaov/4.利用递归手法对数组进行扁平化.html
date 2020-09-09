@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        li{
+            line-height: 30px;
+        }
+    </style>
+</head>
+<body>
+    <ul id="list"></ul>
+    <script src="./js/2data.js"></script>
+    <script>
+         // 递归就是自己调用自己 看看他的循环条件
+
+        //用在目录的编写 一层下面的套一层
+
+        let ul = document.querySelector('#list');
+
+        ul.innerHTML = createHtml(datas);
+
+        //调用打印出来
+        console.log(flat(datas));
+        // 就可以把那两个打勾找出来
+        // let newItems = flat(datas);
+        // console.log(newItems.filter(item=>item.checked));
+        
+        // 封装一个函数实现数组扁平化处理（第一种办法） 数据嵌套比较深 例如排序 搜索会方便很多
+        // function flat(items){
+        //     let newArr = [];
+        //     items.forEach(item=>{
+        //         //遍历第一层本身就是扁平
+        //         newArr.push(item);
+        //         //第二 第三才需要扁平处理
+        //         if(Array.isArray(item.children)){
+        //             newArr = newArr.concat(flat(item.children))
+        //         }
+        //     })
+
+            
+        //     return newArr
+        // }
+
+        // 封装一个函数实现数组扁平化处理（第二种方法 累加方法）
+        function flat(items){
+            //prev上一次处理的结果  current当前循环过程中的值 []初始化的值 第一次会把[]传递给prev 
+            return items.reduce((prev,current)=>{
+                return prev.concat(current,Array.isArray(current.children)?flat(current.children):[]);
+            },[])
+        }
+
+
+        // 解决缩进的问题 用es6 方法定义参数的默认值level=0(es6)全部都为0 level+1在他的children level+1 根据递归一层一层逐渐+1
+        function createHtml(items,level=0){
+            return items.map(item=>{
+
+                // let s = '&nbsp;'.repeat(4 * level); //$nbsp 去生成也是可以 
+                
+
+                let str = `<li style="padding-left:${level*30}px">
+                                <input type="checkbox" ${item.checked?"checked":""}/>
+                                <span>${item.name}</span>
+                            </li>`;
+                
+                // 加一个判断children是不是数组 调用遍历循环 拼接起来
+                if(Array.isArray(item.children)){
+                   str += createHtml(item.children,level+1)
+                }
+                return str;
+            }).join('');
+        }
+    </script>
+</body>
+</html>

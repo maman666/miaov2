@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <p v-for="name in nameslist" :ref="name">{{name}}</p>
+    </div>
+</body>
+<script>
+    /**
+         * key属性的作用（唯一和稳定性）
+         * 无key：就地复用原则（为了减少dom节点操作）
+         * 有key：有利于diff算法的跟踪
+        */
+    let vm = new Vue({
+        el: '#app',
+        data: {
+            nameslist: ['laoxie', 'jingjing', 'lemon', 'tingting']
+        },
+        mounted(){
+            console.log(this.$refs);
+            for(let dom in this.$refs){
+                // console.log(this.$refs[dom])
+                this.$refs[dom][0].myname=this.$refs[dom][0].innerText;
+            }
+        }
+    })
+    //控制台打印
+        //vm.$refs.laoxie[0].myname //"laoxie"
+        //vm.nameslist.reverse()
+        //vm.$refs.laoxie[0].myname //"tingting"
+        //所以加上key进行节点的操作变动，没加只是数据的变动 节点不会变化
+</script>
+
+</html>

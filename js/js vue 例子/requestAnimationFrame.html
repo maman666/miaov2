@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>h5新增定时器</title>
+    <style>
+        #myDiv {
+            background-color: lightblue;
+            width: 0;
+            height: 20px;
+            line-height: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="myDiv">0%</div>
+    <button id="btn">run</button>
+    <script>
+        /*
+            setInterval 的问题( 会出现丢帧的现象 )
+            替代方案（ requestAnimationFrame：不需要设置时间间隔）
+        
+        */
+        var myDiv = document.getElementById('myDiv');
+        var btn = document.getElementById('btn');
+
+        var timer;
+
+        // setInterval
+
+        // btn.onclick=function(){
+        //     clearInterval(timer);
+        //     myDiv.style.width = '0';
+        //     timer = setInterval(function(){
+        //         if(parseInt(myDiv.style.width)<500){
+        //             myDiv.style.width=parseInt(myDiv.style.width)+5+'px';
+        //             myDiv.innerHTML=parseInt(myDiv.style.width)/5+'%';
+        //         }else{
+        //             clearInterval(timer);
+        //         }
+        //     },16);
+        // }
+
+        // setTimeout
+
+        // btn.onclick = function () {
+        //     clearTimeout(timer);
+        //     myDiv.style.width = '0';
+        //     timer = setTimeout(function fn() {
+        //         if (parseInt(myDiv.style.width) < 500) {
+        //             myDiv.style.width = parseInt(myDiv.style.width) + 5 + 'px';
+        //             myDiv.innerHTML = parseInt(myDiv.style.width) / 5 + '%';
+        //             timer = setTimeout(fn, 16);
+        //         } else {
+        //             clearTimeout(timer);
+        //         }
+        //     }, 16);
+        // }
+
+        // requestAnimationFrame
+
+        btn.onclick = function(){
+            cancelAnimationFrame(timer);
+            myDiv.style.width = '0';
+            timer = requestAnimationFrame(function fn(){
+                if(parseInt(myDiv.style.width)<500){
+                    myDiv.style.width = parseInt(myDiv.style.width)+5+'px';
+                    myDiv.innerHTML = parseInt(myDiv.style.width)/5+'%';
+                    timer=requestAnimationFrame(fn);
+                }else{
+                    cancelAnimationFrame(timer);
+                }
+            })
+        }
+    </script>
+</body>
+
+</html>

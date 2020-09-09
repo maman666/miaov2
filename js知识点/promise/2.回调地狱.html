@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+	<script type="text/javascript">
+		
+		/**
+		 * 异步任务处理：回调
+		 *
+		 * 	callback hell：回调地狱
+		 */
+		
+		 /**
+		  * 任务链
+		  * 	我们的任务可能是一个接着一个的，而且是有依赖关系的
+		  */
+
+		var xhr = new XMLHttpRequest();
+		xhr.onload = function() {
+			// console.log(this.responseText);
+
+			// 假设获取到了用户信息了
+			if (user.isVip) {
+				var xhr = new XMLHttpRequest();
+				xhr.open('get', 'http://localhost:7777/getVideo', true);
+
+				xhr.onload = function() {
+					// 根据视频信息，当前视频的具体地址
+					// ...
+				}
+
+				xhr.send();
+			}
+
+		}
+		// 获取当前的用户信息，一下是模拟的url
+		xhr.open('get', 'http://localhost:7777/getuser', true);
+		xhr.send();
+
+	</script>
+
+</body>
+</html>

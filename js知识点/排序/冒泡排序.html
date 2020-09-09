@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    <script type="text/javascript">
+    window.onload = function(){
+        //冒泡排序 就是 一一比较 两个数字大的往后靠 小的往前 进行n多次的排序就能出结果
+        // let arr1 = [6, 1, 2, 7, 40, 3, 4, 5, 10, 50];
+        // for (var j = 0; j < arr1.length - 1; j++) {
+        //     for (var i = 0; i < arr1.length - 1-j; i++) {
+        //         let a = arr1[i];
+        //         let b = arr1[i + 1];
+        //         if (a > b) {
+        //             arr1[i] = b;
+        //             arr1[i + 1] = a;
+        //         }
+        //     }
+        // }
+        // console.log(arr1)
+        
+      // 性能较好的
+      let arr1 = [6, 1, 2, 7, 9, 3, 4, 5, 10, 8];
+        let n =0;
+        for (var j = 0; j < arr1.length-1; j++) {
+            var isok = true;
+            for (var i = 0; i < arr1.length-1-j; i++) {
+                var a = arr1[i];
+                var b = arr1[i + 1];
+                // console.log(a,b);
+                if (a > b) {
+                    arr1[i] = b;
+                    arr1[i + 1] = a;
+                    isok = false;
+                }
+                n++
+            }
+            if(isok==true){
+                break
+            }
+            console.log(arr1.toString()) //把数组转为字符串
+        }
+        console.log(arr1,n);
+
+
+    }
+    </script>
+    </body>
+</html>

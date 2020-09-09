@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var book = {
+            name:"妙味修炼之道",
+            picture:{
+                small:'../这是小的',
+                middle:'../这是中等的',
+                large:'../这是大的',
+            },
+            author:['作者1','作者2'],
+            fun:function(){
+
+            }
+        }
+
+        function clone(obj){
+            var vv = null;
+            if(typeof obj == 'object'&&obj !== null){
+
+                vv = obj instanceof Array ? []:{};
+
+                for(var v in obj){
+
+                    vv[v] = clone(obj[v])
+                }
+
+            }else{
+                vv = obj
+            }
+
+            return vv;
+        }
+
+        var obj = clone(book)
+        console.log(obj);
+    
+        // var obj1 = {}
+        // obj1.name = '';
+        // obj1['name']  = '';
+
+    </script>
+</body>
+</html>

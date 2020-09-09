@@ -1,0 +1,61 @@
+
+
+<!-- 实现对重复模板的继承 -->
+
+{% extends 'layout.html' %}
+
+<!-- 这里的内容有变化，可以用占位block块解决 相当于面向对象 继承 重写 -->
+{% block main %}
+<!-- 路径导航（面包屑导航） -->
+<ol class="breadcrumb">
+    <li><a href="/admin">管理首页</a></li>
+    <li><span>内容列表</span></li>
+</ol>
+
+<h3>内容列表</h3>
+<table class="table table-hover table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>分类名称</th>
+        <th>标题</th>
+        <th>作者</th>
+        <th>添加时间</th>
+        <th>阅读量</th>
+        <th>操作</th>
+    </tr>
+
+<!-- 使用模板的循环语法进行遍历 -->
+<!-- toString()方法将对象转化为字符串 -->
+{% for content in contents %}
+<tr>
+    <td>{{content._id.toString()}}</td>
+    <td>{{content.category.name}}</td>
+    <td>{{content.title}}</td>
+    <td>{{content.user.username}}</td>
+    <td>{{content.addTime | date('Y-m-d H:i:s',-8*60)}}</td>
+    <td>{{content.views}}</td>
+    <td>
+        <a href="/admin/content/edit?id={{content._id.toString()}}">修改</a>
+        <a href="/admin/content/delete?id={{content._id.toString()}}">删除</a>
+    </td>
+</tr>
+{% endfor %}
+</table>
+
+<!-- 引入分页模板 -->
+<!-- include包含的意思 -->
+<!-- 分页 -->
+<nav>
+    <ul class="pager">
+      <li class="previous"><a href="/admin/content?page={{page-1}}"><span aria-hidden="true">&larr;</span> 上一页</a></li>
+      <li>
+          一共有&nbsp<i style="font-weight: bold;">{{count}}</i>&nbsp条数据，
+          每页显示&nbsp<i style="font-weight: bold;">{{limit}}</i>&nbsp条数据，
+          一共有&nbsp<i style="font-weight: bold;">{{pages}}</i>&nbsp页，
+          当前为第&nbsp<i style="color:brown;font-weight: bold;">{{page}}</i>&nbsp页
+      </li>
+      <li class="next"><a href="/admin/content?page={{page+1}}">下一页 <span aria-hidden="true">&rarr;</span></a></li>
+    </ul>
+  </nav>
+  
+{% endblock %}

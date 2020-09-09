@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 简单基本数据类型拷贝
+
+        // var a = 'html';//字符串类型
+        // var b = 123; //数字类型
+        // var c = null;//null类型 归纳于obj类型
+        // var d = true;//布尔类型
+        // var e = undefined;//undefined类型
+        // var f = Symbol('html'); //Symbol类型 
+        
+        // var aa = a;
+        // var bb = b;
+        // var cc = c;
+        // var dd = d;
+        // var ee = e;
+        // var ff = f;
+        
+        // console.log(aa,bb,cc,dd,ee,ff);
+
+
+        
+        //数组的复制
+        var arr = [10,20,30];
+        // var arr1 = arr; //采用直接赋值的方式,所以改变数组的数据会影响复制数组的数据
+        // arr[0] = '你好';
+        // console.log(arr,arr1);
+        var arr2 = [...arr];//通过这种方式拷贝...就不会受到原始数据的影响
+        var arr3 = arr.concat();//concat一般用于合并一个数组,arr作为合并的一员,直接把合并的数据返回出去用arr3接收
+        arr[0] = '你好';
+       console.log(arr,arr2,arr3);
+    </script>
+</body>
+</html>

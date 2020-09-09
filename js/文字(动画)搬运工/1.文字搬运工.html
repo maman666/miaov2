@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css">
+            *{padding: 0;margin:0;}
+            a{text-decoration: none;}
+            li{
+                list-style: none;
+            }
+            #left,#right{
+                width: 300px;
+                height: 150px;
+                border:5px solid #940032;
+                border-radius:15px;
+                position:relative;
+                float: left;
+            }
+            #left span,#right span{
+                width: 80px;
+                height: 40px;
+                background:#4169E1;
+                position: absolute;
+                left:50%;
+                bottom: 5px;
+                border-radius: 5px;
+                text-align: center;
+                color:#fff;
+                line-height: 40px;
+                margin-left: -40px;
+            }
+            #center{
+                width: 70px;
+                height: 100px;
+                padding:30px;
+                position:relative;
+            }
+            #center a{
+                width: 76px;
+                height: 20px;
+                display: block;
+                background:#EF3163;
+                border-radius: 5px;
+                color:#fff;
+                text-align: center;
+                line-height: 20px;
+
+            }
+            #center ul {
+                margin-top:15px;
+                width:80px;
+            }
+            #center ul li{
+                float:left;
+                background-color: #808080;
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+                margin-left: 3px;
+            }
+           
+            #center a:nth-child(2){
+                margin-top:15px;
+            }
+            #right{
+               border-color: #4169E1; 
+            }
+            #right span{
+                background:#940032;
+            }
+            #center{
+                float:left;
+            }
+
+        </style>
+    </head>
+    <body>
+    <div id="left">
+        <p>拍碎双玉斗，慷慨一何多。满腔都是血泪，无处着悲歌。三百年来王气，满目山河依旧，人事竟如何？百户尚牛酒，四塞已干戈。千金剑，万言策，两蹉跎。醉中呵壁自语，醒后一滂沱。不恨年华去也，只恐少年心事，强半为销磨。愿替众生病，稽首礼维摩。</p>
+        <span></span>
+    </div>
+    <div id="center">
+        <a href="javascript:;" id="toLeft">→</a>
+        <a href="javascript:;" id="toRight">←</a>
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        
+    </div>
+    <div id="right">
+            <p></p>
+            <span></span>
+        </div>
+    </body>
+    <script type="text/javascript">
+    var toLeft = document.getElementById('toLeft');
+    var toRight = document.getElementById('toRight')
+    var op = document.getElementsByTagName('p');
+    var lis = document.getElementsByTagName('li');
+    var spans = document.getElementsByTagName('span')
+    var timer = null;
+    spans[0].innerHTML = op[0].innerHTML.length+'/'+op[0].innerHTML.length;   
+    spans[1].innerHTML = op[1].innerHTML.length+'/'+op[0].innerHTML.length;  
+    toLeft.onclick = function(){
+        var len = op[0].innerHTML.length;
+        var num = 0;
+        timer = setInterval(function(){
+            if(op[0].innerHTML.length<=0){
+                clearInterval(timer);
+                                                                           
+            }
+            op[1].innerHTML += op[0].innerHTML.charAt();
+            op[0].innerHTML = op[0].innerHTML.substring(1);
+            spans[0].innerHTML = op[0].innerHTML.length+'/'+len;
+            lis[num].style.background = '';
+            num++;
+            num%=lis.length;
+            lis[num].style.background = 'yellow';
+        }, 30)
+    }
+
+    toRight.onclick = function(){
+        var len = op[1].innerHTML.length;
+        var num = 0;
+        timer = setInterval(function(){
+            if(op[1].innerHTML.length<=0){
+                clearInterval(timer);
+            }
+            op[0].innerHTML += op[1].innerHTML.charAt();
+            op[1].innerHTML = op[1].innerHTML.substring(1);
+            spans[1].innerHTML = op[1].innerHTML.length+'/'+len;
+            lis[num].style.background = '';
+            num++;
+            num%=lis.length;
+            lis[num].style.background = 'yellow';
+        }, 30)
+    }
+    </script>
+</html>

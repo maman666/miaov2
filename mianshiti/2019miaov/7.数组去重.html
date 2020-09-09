@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let arr1 = [1, 4, 2, 3, 3, 4, 5];
+        // //es6 迭代器 Set去重
+        // // Set
+        // // let s1 = new Set();
+        // // s1.add('a');
+        // // s1.add('a');
+        // // s1.add('a');
+        // // console.log(s1);
+        let s1 = new Set(arr1)
+        //...扩展运算符 扩展为数组
+        let newArr = [...s1];
+        //冒泡排序
+        for (var j = 0; j < newArr.length - 1; j++) {
+            for (var i = 0; i < newArr.length - 1-j; i++) {
+                let a = newArr[i];
+                let b = newArr[i + 1];
+                if (a > b) {
+                    newArr[i] = b;
+                    newArr[i + 1] = a;
+                }
+            }
+        }
+        // console.log(newArr);
+
+        //对象去重 对象的key不能重复
+        let obj = {} 
+        arr1.forEach(item=>{
+            obj[item] = 1
+        })
+        // console.log(obj)
+        //把key属性拿出来 转为数字
+        console.log(Object.keys(obj).map(item=>Number(item)));
+
+
+        // 一种方法
+        // indexOf如果要检索的字符串值没有出现，则该方法返回 -1(没有出现)。true
+        // function uniq(array) {
+        //     var temp = []; //一个新的临时数组
+        //     for (var i = 0; i < array.length; i++) {
+        //         // console.log(temp.indexOf(array[i]) == -1)
+        //         if (temp.indexOf(array[i]) == -1) {
+        //             temp.push(array[i]);
+        //         }
+        //     }
+        //     return temp;
+        // }
+
+        // var aa = [1, 2, 2, 4, 9, 6, 7, 5, 2, 3, 5, 6, 5];
+        // console.log(uniq(aa));
+
+
+    </script>
+</body>
+
+</html>

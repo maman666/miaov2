@@ -1,0 +1,12 @@
+
+<!-- 实现对重复模板的继承 -->
+
+{% extends 'layout.html' %}
+
+<!-- 这里的内容有变化，可以用占位block块解决 相当于面向对象 继承 重写 -->
+{% block main %}
+<div class="jumbotron">
+    <h1>Hello, {{userInfo.username}}!</h1>
+    <p>欢迎进入我的博客后台管理</p>
+  </div>
+{% endblock %}

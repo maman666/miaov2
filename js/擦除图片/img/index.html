@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <style type="text/css">
+        #wrap{
+            width: 500px;
+            height: 500px;
+            background: url(./1.jpg);
+            position: relative;
+            border:1px solid #000;
+            background-size: 500px 500px;
+        }
+        #wrap div{
+            position:absolute;
+            width: 50px;
+            height: 50px;
+            background:url(./2.jpg) no-repeat;
+            background-size:50px 50px;
+            transition: 1s;
+        }
+    </style>
+    <body>
+    <div id="wrap">
+        
+    </div>
+    </body>
+    <script type="text/javascript">
+    var wrap = document.getElementById('wrap');
+    var divs = wrap.getElementsByTagName('div');
+    console.log(divs)
+    var str = '';
+    for (var i =0; i<100; i++){
+        str += '<div style="left:'+(i%10)*50+'px;top:'+Math.floor(i/10)*50+'px"></div>'
+    }
+    wrap.innerHTML = str;
+    for(var i =0; i<divs.length; i++){
+        divs[i].onmouseover = function(){
+            this.style.transform = "scale(0)";
+            this.opacity = 0;
+        }
+    }
+    </script>
+</html>

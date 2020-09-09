@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title></title>
+</head>
+
+<body>
+
+
+	<script type="text/javascript">
+
+
+		async function fn() {
+
+
+
+			try {
+				var v = await getValue(10);
+				console.log(v);
+
+				var w = await getValue(20);
+				console.log(w);
+
+				var y = await getValue(200);
+				console.log(y);
+			} catch (e) {
+				console.log(e);
+			}
+
+
+		}
+
+		function getValue(val) {
+			return new Promise((resolve, reject) => {
+				setTimeout(() => {
+					if (val < 100) {
+						resolve(val * 10);
+					} else {
+						reject('传入的值太大了');
+					}
+				}, 2000);
+			});
+		}
+
+		fn();
+
+
+
+	</script>
+
+</body>
+
+</html>

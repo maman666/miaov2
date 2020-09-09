@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    <style type="text/css">
+    *{padding: 0;margin:0;}
+        ul{
+            position: relative;
+            height: 173px;
+            /*overflow: hidden;*/
+        }
+        li{
+            list-style: none;
+            width: 120px;
+            height: 170px;
+            position:relative;
+            float: left;
+        }
+        div{
+            height:340px;
+            position:absolute;
+            top: 0;
+        }
+        img{
+            width:120px;
+            height:170px;
+            vertical-align: top;
+        }
+
+    </style>
+    </head>
+    <body>
+    <ul>
+        <li>
+            <div>
+                <img src="img/0.JPG" alt="" />
+                <img src="img/0.JPG" alt="" />
+            </div>
+        </li>
+        <li>
+            <div>
+                <img src="img/0.JPG" alt="" />
+                <img src="img/0.JPG" alt="" />
+            </div>
+        </li>
+        <li>
+        
+                <img src="img/colon.JPG" alt="" />
+            
+        </li>
+        <li>
+            <div>
+                <img src="img/0.JPG" alt="" />
+                <img src="img/0.JPG" alt="" />
+            </div>
+        </li>
+        <li>
+            <div>
+                <img src="img/0.JPG" alt="" />
+                <img src="img/0.JPG" alt="" />
+            </div>
+        </li>
+        <li>
+         
+                <img src="img/colon.JPG" alt="" />
+           
+        </li>
+        <li>
+            <div>
+                <img src="img/0.JPG" alt="" />
+                <img src="img/0.JPG" alt="" />
+            </div>
+        </li>
+        <li>
+            <div>
+                <img src="img/0.JPG" alt="" />
+                <img src="img/0.JPG" alt="" />
+            </div>
+        </li>
+    </ul>
+    </body>
+    <script type="text/javascript">
+    var divs = document.getElementsByTagName('div');
+    var imgTwo = document.querySelectorAll('li>img');
+   
+    // console.log(divs);
+    setInterval(function(){
+        for(var i =0; i<imgTwo.length; i++){
+            imgTwo[i].src = 'img/colon1.JPG';
+        }
+        setTimeout(function(){
+            for(var j =0; j<imgTwo.length; j++){
+                imgTwo[j].src = 'img/colon.JPG';
+            }
+        }, 500)
+        autoPlay();
+    }, 1000)
+    
+    autoPlay();
+    function autoPlay(){
+        var date = new Date();
+        var h = date.getHours()
+        var m = date.getMinutes();
+        var s = date.getSeconds();
+
+
+        var times = toTwo(h) + toTwo(m) + toTwo(s);
+        for(var i =0; i<times.length; i++){
+            slied(i,times)
+        }
+    }
+    
+    function slied(n,times){
+        var imgs = divs[n].getElementsByTagName('img');
+        imgs[0].src = 'img/'+times[n]+'.JPG' 
+    }
+
+    
+    function toTwo(n){
+        return n<10?'0' + n : '' + n;
+    }
+    </script>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        /**
+            1. 异步
+            2. 作用域（作用域链）
+
+            js代码是js解析器负责执行的
+            
+            查找变量的声明
+        */
+    
+        for (var i=0; i<5; i++) {   //for不是异步
+            setTimeout(function() {
+                console.log(i);
+            }, i*1000);
+        }
+        
+        // 定时器一定是要比这个for要靠后的，当for执行完成了以后
+        // i的值已经是5
+        
+
+        // var a = 1;
+        //console.log(a);
+
+        // setTimeout(function() {
+        //     console.log(a);
+        // }, 1000);
+
+        // document.onclick = fn;
+
+        // a = 2;
+
+    </script>
+</body>
+</html>

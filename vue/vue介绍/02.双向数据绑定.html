@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 模板 -->
+    <div id="demo">
+        <input type="text" v-model="message">
+        <p @click="clickHandle">{{message}}</p>
+    </div>
+    <script src="../vue.js"></script>
+    <script>
+         
+        //数据
+        let data = {
+            message:'hello Vue'
+        }
+        //vm实例(声明式渲染)
+        let vm = new Vue({
+            el:'#demo',
+            data,
+            methods:{
+                clickHandle(){
+                    alert(666)
+                }
+            }
+        })
+        // console.log(vm);
+        // console.dir(vm);
+    </script>
+</body>
+</html>

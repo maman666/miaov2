@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-model="val">
+        <input type="button" value="发送" v-on:click="sendHandle">
+        <ul>
+            <li v-for="(list,index) in lists" :key="list.id">{{list.title}}</li>
+        </ul>
+    </div>
+    <script src="../vue.js"></script>
+    <script>
+
+        /*
+            数据的方法；
+                push pop
+        */
+        let lists = [{
+            id: 123,
+            title: '今天很开心'
+        }, {
+            id: 456,
+            title: '今天很痛苦'
+        }]
+
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                lists,
+                val:''
+            },
+            methods:{
+                sendHandle(){
+                    console.log(this.val);
+                    this.lists.push({
+                        id:Date.now(),
+                        title:this.val
+                    })
+                }
+            }
+        })
+
+        // 模拟的请求的时间
+        // setTimeout(function () {
+        //     vm.lists = [{
+        //         id: 123,
+        //         title: '今天很开心'
+        //     }, {
+        //         id: 456,
+        //         title: '今天很痛苦'
+        //     }]
+        // },1000)
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 模板 -->
+    <div id="demo">
+        <input type="text" v-model="message">
+        <p @click="clickHandle">{{message}}</p>
+    </div>
+    <script src="../vue.js"></script>
+    <script>
+        //原生js写(命令式)
+       let arr = [1,2,3,4,5];
+    //     let newArr = [];
+    //     for(let i =0; i<arr.length; i++){
+    //         newArr.push(arr[i]*2)
+    //     }
+    //     console.log(newArr)
+
+    // 声明式写(不管map里面做了什么 只管做好item*2这个逻辑)
+    let newArr = arr.map(item=>{
+        return item*2
+    })
+    console.log(newArr);
+    </script>
+</body>
+</html>

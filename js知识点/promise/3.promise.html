@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+	<script type="text/javascript">
+		
+		/**
+		 * Promise
+		 * 	构造函数，通过Promise来构建一个异步任务处理对象
+		 */
+		
+		var a = 1;
+		
+		// setTimeout(() => {
+		// 	a = 10;
+		// }, 2000);
+
+		// console.log(a);
+
+
+
+		let p1 = new Promise( (resolve, reject) => {
+			// 要执行的异步任务
+			/**
+			 * resolve：函数，当我们调用该函数的时候，可以把当前Promise对象的任务状态该成resolved
+			 * reject：函数，当我们调用该函数的时候，可以把当前Promise对象的任务状态该成rejected
+			 *
+			 * 只要Promise的任务状态发生了变化，这个Promise对象的then方法就会被执行
+			 */
+			setTimeout(() => {
+				a = 10;
+				// resolve();	//resolved
+				reject();	//rejected
+			}, 2000);
+		} );
+
+		p1.then( () => {
+			// then方法就是Promise处理完任务以后继续执行的任务
+			console.log(a);
+		}, () => {
+			console.log('失败了');
+		} );
+
+
+
+	</script>
+
+</body>
+</html>

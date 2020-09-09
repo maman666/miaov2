@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <script src="../vue.js"></script> -->
+    <h2 id="title"></h2>
+    <button id="btn">点击数据改变</button>
+    <script>
+        // 使用数据的时候，要先对数据进行劫持（代理）
+			//使用Object.defineProperty劫持数据，把属性转成访问器的方式
+			/*
+				getter
+					获取属性触发的
+				setter
+					设置属性触发的
+			*/
+            
+        var data ={
+            title:'新闻'
+        }
+        var title = document.getElementById('title');
+        var btn = document.querySelector('#btn');
+        title.innerHTML=data.title;
+        btn.onclick=function(){
+            data.title = '数据变了'
+            // title.innerHTML=data.title
+        }
+        // Object.defineProperty
+
+        //数据描述
+        /*
+            configurable:是否可以删除目标属性  默认为false
+            enumerable：此属性是否可以被枚举   默认为false
+            value:      该属性对应的值        默认为underfined
+            writable：属性的值是否可以被重写   默认为false
+        
+        */
+
+        //访问器描述
+        /*
+            getter:是一种获取属性值的方法
+            setter:是一种设置属性值的方法
+            可以写: configurable enumerrable
+            不能写: value writable
+        
+        */
+
+		// 定义属性，也可在原有的属性上描述(默认属性的enumerable可枚举性为false)
+        Object.defineProperty(data,'miaov',{
+            value:'ketang',
+            enumerable:true,
+            configurable:false
+        })
+        Object.defineProperty(data,'title',{
+            value:'数据变了',
+            writable:false,
+            enumerable:true
+            
+        })
+        data.title='不能在变'
+        // console.log(data)
+
+        for(var key in data){
+            console.log(key);
+        }
+
+        //删除对象属性
+        delete data.miaov
+        console.log(data);
+    </script>
+
+</body>
+</html>

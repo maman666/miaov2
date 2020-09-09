@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    /* 控制子元素垂直水平居中
+         display: flex;
+        justify-content: center;
+        align-items: center; */
+    .toast-container{
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 0;
+        z-index: 2000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .toast{
+        width: 180px;
+        height: 60px;
+        line-height: 60px;
+        text-align: center;
+        background-color: rgba(0, 0, 0, 0.61);
+        border-radius:10px;
+        color: white;
+    }
+</style>
+<body>
+    <section class="toast-container">
+        <div class="toast">
+            <span>hello,toast</span>
+        </div>
+    </section>
+</body>
+</html>

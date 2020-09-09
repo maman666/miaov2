@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    <a href="javascript:;">北京</a>
+    <a href="javascript:;">上海</a>
+    <a href="javascript:;">广州</a>
+    <a href="javascript:;">深圳</a>
+    <a href="javascript:;">杭州</a>
+    <a href="javascript:;">天津</a>
+    <a href="javascript:;">汕头</a>
+    <a href="javascript:;">厦门</a>
+    <ul id="ul1"></ul>
+    </body>
+    <script type="text/javascript">
+    window.onload = function(){
+        var oA = document.querySelectorAll('a');
+        var oUl = document.querySelector('#ul1');
+        var aLi = oUl.getElementsByTagName('li');
+        console.log(aLi)
+
+        for(var i =0; i<oA.length; i++){
+            oA[i].onclick = function(){
+                if(mj(this.innerHTML)){
+                    // console.log(this.innerHTML)
+                  var oLi = document.createElement('li');
+                    oLi.innerHTML = this.innerHTML;
+                    if(!aLi[0]){
+                        oUl.appendChild(oLi);
+                    }else{
+                        console.log(666)
+                        oUl.insertBefore(oLi,aLi[0]);
+                    }
+                }else{
+                    mj2(this.innerHTML)
+                }
+            }
+        }
+        //枚举算法
+        function mj(text){
+            var result = true;
+            for(var i=0;i<aLi.length; i++){
+                if(aLi[i].innerHTML == text){
+                    result = false
+                }
+            }
+
+            return result;
+        }
+        function mj2(text){
+            for(var i =0; i<aLi.length;i++){
+                if(aLi[i].innerHTML==text){
+                oUl.insertBefore(aLi[i],aLi[0]);
+            }
+            }
+        }
+    }
+    </script>
+</html>

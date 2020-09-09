@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            let
+                不允许重复声明变量
+	            不存在变量提升（var 存在变量提升 ）
+                块级作用域
+            
+            const（常量）
+                声明变量赋值，变量不能被重新赋值
+       
+        */
+        // for(var i = 0; i<3; i++){//直接出来3次3
+        //     document.addEventListener('click',function(){
+        //         alert(i);
+        //     });
+        // }
+
+        for(let i = 0; i<3; i++){//弹出0 1 2 这是块级作用域
+            document.addEventListener('click',function(){
+                alert(i);
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+</head>
+<body>
+   <input type="checkbox" name="fun" checked/>运动
+    <input type="checkbox" name="fun" checked/>唱歌
+    <input type="checkbox" name="fun" checked/>写代码
+
+    <input id="allcheck" type="checkbox" />全选 
+
+    <button id="btn" disabled>现在提交</button>
+
+    <script type="text/javascript">
+        var funs = document.querySelectorAll('input[name="fun"]');
+        var allcheck = document.querySelector('#allcheck');
+        var btn = document.querySelector('#btn');
+
+
+        check();
+        for(var i=0; i<funs.length; i++){
+            funs[i].onclick = function(){
+                check();
+            }
+        }
+        function check(){
+            allcheck.checked = [...funs].every(item=>{
+                    return item.checked //返回都是选中状态，如果有一项不符合状态就为false
+                });
+
+            var isabled = [...funs].some(item=>{
+                return item.checked;//返回的状态都没有选中为false，有一个或多个选中就为true
+            });
+            btn.disabled = !isabled;//disabled禁用，状态为false isabled要取反
+            console.log(isabled);
+        }
+        // allcheck.checked = [...funs].every(item=>{
+        //     return item.checked //返回都是选中状态，如果有一项不符合状态就为false
+        // });
+
+        // console.log(ischecked);
+    </script>
+</body>
+</html>

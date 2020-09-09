@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		function fn(){
+			"use strict" //es5严格模式
+			console.log(this);
+		}
+		fn();//window
+		window.fn();//在严格模式前面必须加上window，不然打印underfined
+	</script>
+</body>
+</html>

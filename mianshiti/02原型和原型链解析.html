@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+    * 1. 在javascript中，函数也是一个对象类型的数据
+    * 2. 函数下也会有很多的特征（属性、方法），这里的属性和方法不是指函数体内的代码
+    * 3. 当一个函数被创建的时候，系统会自动给函数添加一些属性和方法，其中有一个属性
+    * 名称为：prototype（原型），他的值是一个对象
+    * 4. 当一个对象被创建的时候，系统会自动添加给这个对象添加一个属性，名称为：__proto__，
+    * 他的值也是一个对象
+    * 5. 当我们调用一个对象下的属性或方法的时候，首先会在该对象自身上查找是否存在，如果自身没有
+    * ，那么会查找该对象下的 __proto__ 属性下是否存在该属性或方法，如果有则调用了
+    * */
+
+    function Fn(){
+        this.x = 1
+    }
+    Fn.prototype.y=2
+    Object.prototype.z = 3;
+    console.dir(Fn);//console.log()可以取代alert()或document.write()  //console.dir()可以显示一个对象所有的属性和方法。
+
+   //可以理解为
+//    Fn = {
+//        prototype: new Object()
+//    } 
+
+
+  // 通过new来创建一个Fn对应的实例化对象
+    let f =new Fn();
+    console.dir(f);
+    console.log(f.__proto__ == Fn.prototype);//true
+
+    console.log(f.x)//1
+    console.log(f.y)//2 
+    // console.log(f.y)//2
+    
+    //  // f.y => f.__proto__.y == Fn.prototype.y //原型链（原型认为是一个对象，原型链可以认为是查找规则）
+
+     console.log(f.z)//3
+     // f.z => f.__proto__.z == Fn.prototype.z => Fn.prototype.__proto__.z
+     //Fn.prototype.__proto__.z == Object.prototype.z => Object.prototype.__proto__ = null(顶层元素为空 返回undefined)
+    </script>
+</body>
+</html>

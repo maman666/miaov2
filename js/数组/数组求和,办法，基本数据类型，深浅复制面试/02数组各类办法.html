@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+</head>
+<body>
+    <input type="checkbox" name="fun" />运动
+    <input type="checkbox" name="fun" />唱歌
+    <input type="checkbox" name="fun" />写代码
+
+    <input type="checkbox" />全选
+
+    <script type="text/javascript">
+        // var arr = [10,20,30,'html'];
+        // var arr1=arr.map(item=>{
+        //     return item=item+10;
+        // });
+        // console.log(arr1);
+        
+
+
+
+        // var arr2=arr.filter(item=>{
+        //     return typeof item=='string'
+        // });
+        // console.log(arr2);
+        
+
+        
+        
+        var funs = document.querySelectorAll('input[name="fun"]');
+
+        // var arr = [10,20,30];
+
+        // console.log(funs,arr);
+        
+        // console.log(Array.isArray(funs));//判断真伪数组
+        // console.log(Array.isArray(arr));
+
+        // funs.every(item=>{
+
+        // });
+        
+
+        /*
+            伪数组转换为真数组的办法
+
+         */
+        // var arr = [];
+        // for(var i=0; i<funs.length; i++){
+        //     arr.push(funs[i]);
+        // }
+        // console.log(arr);
+        
+
+
+
+
+        // var arr = Array.from(funs);
+        // console.log(arr);
+        
+
+
+
+
+        /*
+            Es6扩展运算符 ...
+            以参数的形式，进行扩展
+            参数形式arr1,arr2,arr3
+            
+         */
+        // var arr = [...funs];//等同于var arr = [funs[0],funs[1],funs[2]]
+        // console.log(arr);
+        
+
+
+
+        
+        /*
+            call
+                调用一个对象的一个方法，用另一个对象替换当前对象
+                例如：B.fn.call(A) 即A对象调用B对象方法
+
+         */
+        // var arr = Array.prototype.slice.call(funs);
+        // console.log(arr);
+        // var arr2 = [10,20,30];
+        // var arr3 = arr2.slice(0,2);
+        // var arr3 = arr2.slice();
+        // console.log(arr3);
+    </script>
+</body>
+</html>

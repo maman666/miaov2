@@ -1,0 +1,7 @@
+<!-- 自定义组件 -->
+
+<view>{{nowIn}}</view>
+<view class="pressBtn" id="view" data-name="rongqi">
+  <view>{{magicNumber}}</view>
+  <text id='text' data-name="wenzi" bind:tap="onTap">点我可以打印信息</text>
+</view>

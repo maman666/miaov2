@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            解构赋值：数组或者对象存在很多方法，去拿的时候可以采用解构赋值
+        */
+        // //数组的解构 (一一对应  多出变量为赋值 打印undefined 可以给默认值)
+        // var [a,b,c,d,e='默认值'] = [1,2,3,4,5];
+        // console.log(a,e)
+
+        // //对像的解构赋值
+        // let obj = {
+        //     fn:function(){666},
+        //     add:function(){123},
+        //     isFunction:function(){789}
+        // }
+        // // let obj2 = obj.fn;
+        // // console.log(obj2);
+        // let {add,fn,isFunction,isArray=function(){333}} = obj;
+        // console.log(add,fn,isFunction,isArray);
+
+            //函数的参数解构赋值
+            // function fn(item){
+            //     console.log(item.a);
+            //     console.log(item.b);
+            //     console.log(item.c);
+            // }
+            // function fn({a,b,c}){
+            //     console.log(a);
+            //     console.log(b);
+            //     console.log(c);
+            // }
+            // fn({
+            //     a:1,
+            //     b:2,
+            //     c:3
+            // })
+
+            //字符串模板
+                let str = 'xiaoxie';
+                let str2 = `
+                    <ul>
+                        <li>${str}</li>
+                        <li>${1+1}</li>
+                        <li>${'laoxie'}</li>
+                        <li>${[1,2,3].push(6)}</li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                `
+                console.log(str2);
+    </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    <script type="text/javascript">
+
+    // test方法
+    
+    // var str = '1316464651212';
+    // var reg = /\D/
+    // if(reg.test(str)){
+    //     console.log('不全是数字')
+    // }else{
+    //     console.log('全是数字')
+    // }
+    // 
+    //search方法
+    // var str = 'abcv'
+    // var re = /B/i //i 忽略大小写
+    // console.log(str.search(re)) //1
+
+
+    //match方法
+    var str = '111asdasd111dasdaad963';
+    var re = /\d+/g  // \转义符 d：数字类型 +：量词 至少出现一次 g全局匹配
+    console.log(str.match(re)) //["123", "256", "963"]
+    </script>
+    </body>
+</html>

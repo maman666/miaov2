@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .tupian img{
+            width: 50%;
+        }
+    </style>
+</head>
+<body>
+    <h1>图片请求</h1>
+    <p class="p1"></p>
+    <p class="p2"></p>
+    <p class="p3"></p>
+    <div class="tupian"></div>
+    <div class="tupian2"></div>
+    
+
+    <script>
+        (()=>{
+            
+            let p1 = document.querySelector('.p1');
+            let p2 = document.querySelector('.p2');
+            let p3 = document.querySelector('.p3');
+            let tupian = document.querySelector('.tupian');
+            let tupian2 = document.querySelector('.tupian2');
+            let xhr = new XMLHttpRequest();
+            xhr.onload=()=>{
+                let res = JSON.parse(xhr.responseText);
+                // res = res[0]
+                console.log(res);
+                
+                    
+                    // p1.innerText ='名字:'+res.name;
+                    // p2.innerText ='年龄：'+res.age;
+                    // p3.innerText ='性别：'+res.gender;
+                    // tupian.innerHTML =`<img src="./assets/img/${res.urlImg}"/>`;
+                    // tupian2.innerHTML =`<img src="./assets/img/${res.urlImg2}"/>`;
+
+                
+            }
+            xhr.open('get','/img',true);
+            // xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+            xhr.send();
+        })()
+    </script>
+</body>
+</html>

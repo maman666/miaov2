@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var book = {
+            name:"妙味修炼之道",
+            picture:{
+                small:'../这是小的',
+                middle:'../这是中等的',
+                large:'../这是大的',
+            },
+            author:['作者1','作者2'],
+            fun:function(){
+
+            }
+        }
+        
+        function copy(obj){
+            
+            var vv = {}
+            for(var v in obj){
+
+                if(typeof obj[v] == 'object'){
+                    vv[v] = copy(obj[v])
+                }else{
+                    vv[v] = obj[v]
+                }
+                
+            }
+            return vv;
+        }
+        
+
+        var obj = copy(book);
+
+        book.name = 'css'
+        book.picture.small = '这是大的'
+        console.log(obj)
+
+
+    </script>
+    
+</body>
+</html>

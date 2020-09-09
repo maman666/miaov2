@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-on:input="inputHandle">
+        <p>{{message}}</p>
+
+    </div>
+    <script src="../vue.js"></script>
+    <script>
+        var message = 'hello xiaoxie';
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                message
+            },
+            methods:{
+                inputHandle(ev){
+                    console.log(this===vm);//this指向vm实例
+                    console.log(ev.target.value)
+                    console.log('触发了input');
+                    this.message = ev.target.value;
+                }
+            }
+        })
+        console.log(vm);
+    </script>
+</body>
+</html>

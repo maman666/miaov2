@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 问题：现有的数据结构 不利于数据检索
+        // Array.prototype.flat() 只能是一层 Infinity 加上这个参数无数层
+        var arr = [1,2,3,['a','b','c',['中','文']],4];
+        console.log(arr.flat(Infinity));  //[1, 2, 3, "a", "b", "c", "中", "文", 4]  
+    </script>
+</body>
+</html>

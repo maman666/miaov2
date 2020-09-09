@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // js中数据类型有：__
+        //     A:undefined  null  string  function  NaN  object  Symbol
+
+        //     B:undefined  null  string  boolean  NaN  object   Symbol
+
+        //     C:undefined  null  string  boolean  object  symbol  
+
+        //     D:undefined  null  string  boolean  function  object  Symbol
+
+
+
+
+
+
+        /*
+            标准：
+                基础类型：null undefined  number（NaN）  boolean  string  Symbol
+                复杂类型：object（array {} function）
+
+            typeof： （把null归到对象）
+                object（null）  undefined  number  boolean  string  Symbol function
+
+        */
+
+
+
+
+
+
+
+        // 下面代码执行的结果是：__
+
+        // Object.prototype.y = 100;
+
+        // const obj = {
+        //     x: 1
+        // };
+        // obj.prototype = {
+        //     y: 10
+        // }
+
+        // function F() { }
+        // F.prototype.y = 2;
+        // F.prototype = obj;
+
+        // const f = new F();
+
+        // console.log(f.x + f.y);
+
+        // A. 11
+        // B. 101
+        // C.NaN
+        // D. 3
+
+        let obj = {
+            name:'leoxie',
+            score:{
+                math:60,
+                chinses:70,
+                it:{}
+            }
+        }
+         let obj2 = {...obj}
+         console.log(obj2)
+
+    </script>
+
+
+</body>
+
+</html>

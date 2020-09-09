@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../lib/bs/bootstrap.css">
+    <script src="../lib/vue.js"></script>
+</head>
+
+<body>
+
+    <h1>07tab标签切换</h1>
+    <div class="container">
+        <ul class="nav nav-tabs" @click=test>
+            <li class="nav-item" v-for="(item,idx) in tab" @click.stop="change(idx)">
+                <a :class="{'nav-link':true,active:idx===active}" href="#">{{item.title}}</a>
+            </li>
+        </ul>
+        <div class="content" v-for="(item,idx) in tab" v-show="idx===active">{{item.content}}</div>
+    </div>
+
+    <script>
+        /**
+            指令
+                * v-for 遍历
+                * 显示隐藏
+                    * v-if/v-else/v-else-if
+                    * v-show
+                * 属性操作
+                    * 格式：v-bind:属性=属性值
+                    * 简写：:src='imgurl'
+                    * class
+                    * style
+                * 事件
+                    * 格式：v-on:事件类型=事件处理函数
+                    * 简写：@click="change"
+
+        */
+        let vm = new Vue({
+            el: '.container',
+            data: {
+                tab: [
+                    {
+                        title: 'laoxie',
+                        imgurl: 'img/laoxie.jpg',
+                        content: 'laoxie最爱敲代码'
+                    },
+                    {
+                        title: 'jingjing',
+                        imgurl: 'img/jingjing.png',
+                        content: 'jingjing最爱健身'
+                    },
+                    {
+                        title: 'tingting',
+                        imgurl: 'img/ting.jpg',
+                        content: 'tingting最爱和静静健身'
+                    }
+                ],
+                active:0
+            },
+            methods:{
+                change(idx){
+                    this.active = idx;
+                },
+                test(){
+                    console.log(666)
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

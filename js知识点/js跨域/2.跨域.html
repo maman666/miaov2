@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    <script type="text/javascript">
+    /**
+     * 同源策略的问题 不能跨域 
+     * 
+     * 协议不同： http://
+
+        子域名不同：www
+
+        主域名不同：baidu.com
+
+        端口号不同：8080
+
+        ip地址和网址不同：www.baidu.com
+
+        解决方法
+        1.document.domain = 'a.com'
+        2.服务器代理：XMLHttpRequest代理文件
+        3.script标签：jsonp
+            jsonp:json+padding(内填充)
+            比如a网站本地网站：通过回调得到数据function box(json){alert(json.name)}
+                请求b网站地数据：json数据格式:box({name:"miaov"})
+        4.location.hash <iframe src="xxx.php#key=value&key2=value"></iframe> parent.location.hash = self.location.hash
+     *     
+     */
+    
+     //动态创建script标签
+     function createJs(sUrl){
+        var oScript = document.createElement('script');
+        oScript.type = 'text/javascript';
+        oScript.src = sUrl;
+        document.getElementsByTagName('head')[0].appendChild(oScript);
+     }
+     createJs('jsonp.js?callback=aaa')
+
+        function aaa(json){
+            alert(json.name)
+        }
+    </script>
+ 
+    </body>
+</html>

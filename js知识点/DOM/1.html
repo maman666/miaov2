@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+        /*
+		DOM:
+			Document  Object  Model(文档对象模型) 
+			
+		DOM结构关系：
+			父子关系
+			祖先关系
+			兄弟关系
+			
+		父子节点 ： 上下两层节点之间的关系。
+		
+		祖先节点 ：当前节点上面的所有节点的统称。
+		
+		子孙节点 ：当前节点下面的所有节点的统称。
+        
+        */
+
+        // 按照节点的类型划分：
+		// 	nodeType  返回一个数字
+			
+		// 	var str = '';
+			
+		// 	元素节点：
+		// 		数字1
+        var div = document.getElementById('box');
+        div.style.cssText = 'width:100px;height:100px;background:red'
+        console.log(div.nodeType);
+    </script>
+</body>
+</html>

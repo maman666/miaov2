@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <p>{{msg}}</p>
+        <p>{{miaov.ketang}}</p>
+    </div>
+    <script src="../vue.js"></script>
+    <script>
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                msg: 'hello', // 只有计划好的数据，才能做相应reactive
+                miaov: {}
+            }
+        })
+        // 这样做是不能够响应的
+        // vm.miaov.ketang = '我是新加的'
+
+        // 调用Vue的静态方法set
+        // 语法：Vue.set(target,prop,value)
+        // setTimeout(function(){
+        //     Vue.set(vm.miaov,'ketang','我是新加的')
+        // },1000)
+
+        //调用实例上的方法 $set
+        // vm.$set(vm.miaov,'ketang','我是新加的')
+
+
+        // 静态方法是挂载在函数上的方法，调用的时候通过函数调用
+        // 原型上的方法，需要通过实例调用
+
+        // 静态方法
+        // function fn() {
+
+        // }
+        // // 称这个miaov这个方法为静态方法
+        // fn.miaov = function () {
+
+        // }
+
+        // console.log(Array.prototype);
+
+        // let arr = new Array;  // 实例
+        // arr.push()
+
+
+
+
+
+        // 这样做是不能够响应的
+        //vm.miaov.ketang = '我是新加的'
+
+        // 改写属性的值，重新赋值
+        //vm.miaov = {ketang:'新的'}
+        // 就相当于是给vm,miaov这个对象添加一个属性
+        // Object.assign(vm.miaov,{ketang:'新的'})
+        // var o = Object.assign(vm.miaov,{ketang:'新的'})
+        // o这个返回值就是vm.miaov这个对象，所以又赋给vm.miaov，并不会重新更新视图
+        // vm.miaov = o;
+
+        // console.log(o === vm.miaov);
+        vm.miaov = Object.assign({},vm.miaov, { ketang: '新的666' })//这里必须加上{}，这个才是新对象，才是响应式
+
+        console.log(vm.miaov);
+
+
+        console.log(vm);
+    </script>
+</body>
+
+</html>

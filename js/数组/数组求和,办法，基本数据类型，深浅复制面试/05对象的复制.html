@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //对象的复制
+        var book = {
+            name:"修炼之道",
+            picture:{
+                small:"../这是小的",
+                middle:"../这是中的",
+                large:"../这是大的"
+            }
+        }
+        var obj = {}
+        for(var key in book){
+            // console.log(key,book[key]);
+            obj[key] = book[key];//这里实现只是浅拷贝,如果修改picture对象里面的值也就是第二层的值会影响obj的值
+        }
+        book.name = "css修炼";//第一层不会影响
+        book.picture.small = "../我是很6的";//到了第二层就影响到了
+        console.log(obj);
+    </script>
+</body>
+</html>

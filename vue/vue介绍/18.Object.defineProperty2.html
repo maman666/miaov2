@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- <script src="../vue.js"></script> -->
+    <h2 id="title"></h2>
+    <button id="btn">点击数据改变</button>
+    <script>
+        // 使用数据的时候，要先对数据进行劫持（代理）
+        //使用Object.defineProperty劫持数据，把属性转成访问器的方式
+        /*
+            getter
+                获取属性触发的
+            setter
+                设置属性触发的
+        */
+
+        var data = {
+            title: '新闻',
+            miaov:1
+        }
+        //数据却持,转成getter和setter
+
+        observer(data);
+        
+        //封装一个遍历属性   Object.keys(obj)选中对象的属性
+        function observer(obj){
+            Object.keys(obj).forEach(item=>{
+                defineReactive(obj,item,obj[item])//调用访问器属性的封装方法
+            })
+        }
+
+        //封装把属性转化为get和set访问器属性
+        function defineReactive(obj,key,value){
+            Object.defineProperty(obj,key,{
+                get(){
+                    return value;
+                },
+                set(newValue){
+                    value = newValue;
+                    title.innerHTML = newValue;
+                }
+            })
+        }
+        console.log(data);
+
+        var title = document.getElementById('title');
+        var btn = document.querySelector('#btn');
+        title.innerHTML = data.title;
+        btn.onclick = function () {
+            data.title = '数据变了'
+            // title.innerHTML=data.title
+        }
+        // Object.defineProperty
+
+        //数据描述
+        /*
+            configurable:是否可以删除目标属性  默认为false
+            enumerable：此属性是否可以被枚举   默认为false
+            value:      该属性对应的值        默认为underfined
+            writable：属性的值是否可以被重写   默认为false
+        
+        */
+
+        //访问器描述
+        /*
+            getter:是一种获取属性值的方法
+            setter:是一种设置属性值的方法
+            可以写: configurable enumerrable
+            不能写: value writable
+        
+        */
+        // var val = '新的值'
+        // Object.defineProperty(data, 'title', {
+        //     get() {
+        //         console.log('我访问数据了')
+        //         return val
+        //     },
+        //     set(newValue) {
+        //         console.log('我设置了新值')
+        //         console.log(newValue)
+        //         val = newValue;
+        //     }
+        // })
+        // console.log(data.title);//通过访问title属性 触发get函数
+        // data.title = 666;//通过设置title属性 触发set函数
+        // console.log(data.title);
+
+    </script>
+
+</body>
+
+</html>

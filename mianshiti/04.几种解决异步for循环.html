@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    //闭包
+        // for (var i=0; i<5; i++) {
+        //     (function(i) {
+        //         setTimeout(function() {
+        //             console.log(i);
+        //         }, i*1000)
+        //     })(i);
+        // }
+
+        
+
+        // 微任务 - 宏任务
+
+        //for (var i=0; i<5; i++) {
+            //fn(i);  //传i，传的值，把i的值赋值给了a
+
+            // fn(0);
+            // fn(1);
+            // fn(2);
+            // fn(3);
+            // fn(4);
+        //}
+
+        // function fn(a) {
+        //     setTimeout(function() {
+        //         console.log(a);
+        //     }, 1000);
+        // }
+
+      
+        
+        // var a = 10;
+
+        // setTimeout((function(i){
+        //     return function() {
+        //         console.log(i);
+        //     }
+        // })(a), 1000);
+
+     //es6 let块级作用域
+        // for (let i=0; i<5; i++) {
+        //     setTimeout(function() {
+        //         console.log(i);
+        //     }, i*1000);
+        // }
+
+        // console.log(i)
+
+        
+
+    </script>
+</body>
+</html>

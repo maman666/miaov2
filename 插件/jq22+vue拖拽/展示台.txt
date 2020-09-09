@@ -1,0 +1,10 @@
+http://www.jq22.com/yanshi2145 样板参考
+
+https://github.com/hilongjw/vue-dragging     vue-dragging拓展GitHub地址
+
+https://blog.csdn.net/xiazaixm/article/details/59030059 前端拖拽插件讲解
+
+项目码云地址
+https://gitee.com/kevinyxl/fhPc
+
+https://gitee.com/kevinyxl/fhCompanyPc

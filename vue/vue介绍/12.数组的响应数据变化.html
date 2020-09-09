@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <p>{{list}}</p>
+    </div>
+    <script src="../vue.js"></script>
+    <script>
+        // 数据劫持 转成getter/setter
+        let vm = new Vue({
+            el: '#app',
+            data: {  // 只有计划好的数据，才能做相应reactive
+                list: [1, 2, 3]
+            }
+        })
+
+        /*
+        提供了观察数组的变异方法，使用这些方法将会触发视图更新
+        push()、pop()、shift()、unshift()、splice()、sort()、reverse()
+        会改变原数组
+        */
+
+        // vm.list.push(1000)
+
+        //不会改变原数组
+        // vm.list.map(item=>item*2);
+        // vm.list = vm.list.map(item=>item*2);//强制赋值改变
+
+        // 同过下标改变值不可以
+        vm.list[0] = 'xiaoxie';
+        //可以这样使用 数组splice(index,howmany,item1, ..., itemX) 方法可删除从 index 处开始的零个或多个元素，
+        //并且用参数列表中声明的一个或多个值来替换那些被删除的元素。 index:规定位置 howmany:删除的项目数量 item1, ..., itemX:可选。向数组添加的新项目。
+        vm.list.splice(0,1,'xiaoxie')
+
+
+        // length是不能改变原数组的
+			vm.list.length = 1;
+
+    </script>
+</body>
+
+</html>

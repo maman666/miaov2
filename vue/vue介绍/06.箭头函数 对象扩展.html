@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //箭头函数
+        // var f = ()=>{
+        //     console.log(123);
+        // }
+        // //调用
+        // f();
+
+        // var add = ()=> 2;//箭头后面直接跟着返回值，不需要return
+        // console.log(add());
+
+        // //传一个参数，不需要跨号
+        // var add = item => item+2;//箭头后面直接跟着返回值，不需要return
+        // console.log(add(10));//没有传参 结果为NaN
+
+        // //传两个个参数，需要跨号
+        // var add = (a,b) => a+b;//箭头后面直接跟着返回值，不需要return
+        // console.log(add(10,20));//没有传参 结果为NaN
+
+
+        // //传两个个参数，需要跨号
+        // var add = (a,b) => {num:a+b};//打垮号 函数会认为这个一个函数体（函数的大括号），返回一个undefined，
+        // console.log(add(10,20));//没有传参 结果为NaN
+
+        // //传两个个参数，需要跨号
+        // var add = (a,b) => ({num:a+b});//这个时候就要有返回值 让函数返回一个对象需要加个圆括号
+        // console.log(add(10,20));//没有传参 结果为NaN
+
+        // //传两个个参数，需要跨号
+        // var add = (a,b) =>{//这就是一个函数体
+        //     if(a<10){
+        //         a=100
+        //     }
+        //     return a+b//必须有返回值
+        // };
+        // console.log(add(5,20));//没有传参 结果为NaN
+
+
+
+        // document.onclick = function(){
+        //     var _this = this;//点击document的时候把this先给存起来
+        //     setTimeout(function(){
+        //         console.log(this);//指向window
+        //         console.log(_this);//指向document
+        //     },1000)
+        // }
+
+
+        // function fn(){
+        //      console.log(this);// this指向window
+        // }
+        // fn();
+        // document.onclick = fn // 事件调用 直接加函数名就可以  可以指定this指向 document
+
+            //箭头函数中的this绑定所定义的作用域中的this
+        // document.onclick = function(){
+        //     setTimeout(()=>{
+        //         console.log(this);//指向document
+        //     },1000)
+        // }
+
+        //箭头函数的默认值
+    //     function fn(a=10){//a=10时函数的默认值
+    //         // let a = 100 // let const 不能重复声明，语法错误 var就可以
+    //         console.log(a);
+    //     }
+    //     fn(0)
+
+        //rest参数
+        // function fn(a,...arr){//...是rest参数 把实参放在数组中
+        //     // console.log(arguments);//arguments打印的是类数组
+        //     console.log(a)//把a的实参提取出来 剩下放在arr数组中
+        //     console.log(arr)//打印出来是真数组
+        // }
+        // fn(1)
+        // fn(1,2)
+        // fn(1,2,3,4)
+
+
+        // 对象的扩展 Object.assign(target,[合并的对象......]) 用户合并对象，将原对象的所有属性的可枚举性，复制到目标对象
+
+        // var o = {a:1}
+        // var o2 = {b:2}
+        // var o3 = {c:3}
+        // Object.assign(o,o2,o3);//把o2，o3给合并到o里面
+        // console.log(o)
+
+        // function fn(option){
+        //     let defaults = {
+        //         a:'默认1',
+        //         b:'默认2',
+        //         c:'默认3'
+        //     }
+        //     Object.assign(defaults,option);
+        //     console.log(defaults);//打印1，2 '默认3'
+        // }
+        // fn({
+        //     a:1,
+        //     b:2
+            
+        // });
+
+
+        // 扩展运算符(遍历对象的属性 放到另一个对象身上)
+            // var arr = [1,2,3]
+            // var arr2 = [4,5,6]
+            // var arr3 = [...arr,...arr2];
+            // console.log(arr3);
+        
+        var obj = {a:1}
+        var obj2 = {b:2}
+        var o = {...obj,...obj2}
+        console.log(o);
+
+
+    </script>
+</body>
+</html>

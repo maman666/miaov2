@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        var book = {
+            name: "修炼之道",
+            picture: {
+                small: "../这是小的",
+                middle: "../这是中的",
+                large: "../这是大的"
+            },
+            fun:function(){
+
+            }
+        }
+
+        /*
+           Object.assign(target,...sources)
+
+           target:目标对象
+           ...sources:原对象
+       
+       */
+        // var a = {
+        //     a: 1
+        // }
+        // var b = {
+        //     b: 2
+        // }
+        // var c = {
+        //     c: 3
+        // }
+        // var d = Object.assign({},a, b, c);//Object.assign会把你的属性都融合进去
+        // // console.log(d);
+        // console.log(a);//{a: 1, b: 2, c: 3}因为assign在融合的时候会把你的目标对象作为基础对象,所以assign会改变目标对象,
+        //               //目标对象不想被改变的话 在目标对象前面加个空对象 {}
+
+
+
+        // var obj = Object.assign({},book);
+        // book.name = 'css';
+        // book.picture.small = 'html';
+        // console.log(obj);//打印出来第二层small变为html,所以说这种拷贝是浅拷贝
+
+
+
+        //1.深拷贝(有点问题)
+
+        var obj = JSON.parse(JSON.stringify(book));//先转换为字符串,字符串是基本数据类型,会单独开辟另一个空间,在转换为对象,实现简单深拷贝
+                                                    //但是会出现问题无法拷贝function或者undefined,因为json无法转换function
+        book.name = 'css';
+        book.picture.small = 'html';
+        console.log(book,obj);
+
+
+    </script>
+</body>
+
+</html>

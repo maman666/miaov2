@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button class="btn">点我复制</button>
+    <script>
+        (()=>{
+            let btn = document.querySelector('.btn');
+        btn.onclick=function(){
+            
+            var oInput = document.createElement('input');
+            oInput.value = '666';
+            document.body.appendChild(oInput);
+            oInput.select(); // 选择对象
+            document.execCommand("Copy"); // 执行浏览器复制命令
+            oInput.className = 'oInput';
+            oInput.style.display='none';
+            alert('复制成功')
+        }
+        
+        })()
+        
+    </script>
+</body>
+</html>

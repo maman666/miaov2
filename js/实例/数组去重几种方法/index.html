@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 最简单数组去重法
+/*
+* 新建一新数组，遍历传入数组，值不在新数组就push进该新数组中
+* IE8以下不支持数组的indexOf方法
+* */
+function uniq(array){
+    var temp = []; //一个新的临时数组
+    for(var i = 0; i < array.length; i++){
+        if(temp.indexOf(array[i]) == -1){
+            temp.push(array[i]);
+        }
+    }
+    return temp;
+}
+
+var aa = [1,2,2,4,9,6,7,5,2,3,5,6,5];
+console.log(uniq(aa));
+    </script>
+</body>
+</html>

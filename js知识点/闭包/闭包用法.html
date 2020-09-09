@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <script type="text/javascript">
+    window.onload = function(){
+        //在循环中找到对应元素的索引
+        var oUl = document.getElementById('ul');
+        var aLi = document.getElementsByTagName('li');
+        for(var i =0; i<aLi.length;i++){
+            (function(i){
+            aLi[i].onclick = function(){
+                alert(i) //内部函数可以去调外部函数的参数和变量,外部函数执行完毕不会影响到内部函数
+             }
+            })(i)
+        }
+    }
+    </script>
+    <body>
+    <ul id="ul1">
+        <li>111</li>
+        <li>222</li>
+        <li>333</li>
+        <li>444</li>
+    </ul>
+    </body>
+</html>
+
+

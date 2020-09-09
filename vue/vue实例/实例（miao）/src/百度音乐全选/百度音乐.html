@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body,
+			ul,
+			li {
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+			.list-body li:nth-child(even) {
+				background: yellow;
+			}
+			.list-body li:nth-child(odd) {
+				background: #fff;
+			}
+			.list-body li:hover {
+				background: green;
+			}
+			.list-body li.checkedColor {
+				background: green;
+			}
+		</style>
+		<link rel="stylesheet" type="text/css" href="css/baidu.css" />
+		<script src="../lib/vue.js"></script>
+	</head>
+
+	<body>
+		<div class="wrap" id="app">
+			<div class="baidu">
+				<ul class="list list-head">
+					<li>
+						<div>
+							<input type="checkbox" v-model="isCheckedAll" />全选
+						</div>
+						<span>歌单</span>
+						<span>歌手</span>
+						<span>专辑</span>
+					</li>
+				</ul>
+				<ul class="list list-body">
+					<li class="checkedColor" v-for="item in songList">
+						<div>
+							<input type="checkbox" v-model="item.checked">
+						</div>
+						<span>{{item.song}}</span>
+						<span>{{item.name}}</span>
+						<span>{{item.album}}</span>
+					</li>
+				</ul>
+				<div class="select">
+					<span class="selectAll">
+
+						<span>统计：</span>
+					</span>
+					<div class="others">
+						<span><em></em>歌手有：{{selectedSongersLen}}位</span>
+						<span><em></em>专辑有{{album}}张</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script>
+			let data = [
+				{
+					id:Date.now()+Math.random(),
+					name: '邓紫棋',
+					song: '泡沫',
+					checked: true,
+					album: 10
+				},
+				{
+					id:Date.now()+Math.random(),
+					name: '王杰',
+					song: '泡沫',
+					checked: true,
+					album: 10
+				},
+				{
+					id:Date.now()+Math.random(),
+					name: '邓紫棋',
+					song: '泡沫',
+					checked: true,
+					album: 10
+				}
+			]
+				
+			let vm = new Vue({
+				el:'#app',
+				data:{
+					songList:data
+				},
+				computed:{
+					//定义了计算属性没有使用，不会执行这个函数
+					/*
+						对计算属性操作
+							只给计算属性一个函数，默认这个函数是在取值的时候触发的，这个是get函数
+
+							设置值
+								set(){}
+							取值
+								get(){}
+					
+					*/
+					// isCheckedAll(){
+					// 	//every方法，当数组中的每一项都满足这个条件，返回true，只要有一项不满足就返回false
+					// 	let bl = this.songList.every(function(item){
+					// 		return item.checked
+					// 	})
+					// 	return bl;
+					// },
+					isCheckedAll:{
+						get(){
+							console.log('取值');
+							return this.songList.every(function(item){
+								return item.checked
+							})
+						},
+						set(newValue){
+							console.log('设置值')
+							console.log(newValue)//true false 让每一项要不就是true 还是false
+							this.songList.forEach(item=>item.checked=newValue)
+						}
+					},
+					selectedSongersLen(){
+						//把选中的歌手根据长度给过滤出来
+						// return this.songList.filter(item=>item.checked).length
+						let songer = this.songList.filter(item=>item.checked)
+						return fn(songer).length
+					},
+					album(){
+						//reduce累加用法 n可以理解为多少个，item理解为每一项
+						return this.songList.filter(item=>item.checked).reduce((n,item)=>n+item.album,0);
+						// let n = 0;
+						// this.songList.filter(item=>item.checked).forEach(item=>{
+						// 	n+=item.album
+						// })
+						// return n;
+					}
+				}
+			})	
+			// console.log(vm);
+			//数组去重的封装，去重名字
+			function fn(option){
+				var json ={};
+				var arr = [];
+				option.forEach(item=>{
+					if(!json[item.name]){
+						json[item.name]=true;
+						arr.push(item)
+					}
+				})
+				console.log(arr)
+				return arr
+			}
+				
+		</script>
+	</body>
+
+</html>

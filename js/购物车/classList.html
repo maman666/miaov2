@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            border: 1px solid #000;
+        }
+        .box1{
+            background: red;
+        }
+        .box2{
+            background: #58bc58;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="box box1"></div>
+    <script>
+        /*
+            添加属性 classList.add 添加属性className
+            移除属性 classList.remove  移除属性className
+
+            如果className添加属性 如 this.className('box' 'box1' 'box')加上原来的属性名
+        */
+        var box = document.querySelector('.box');
+        box.onclick=function(){
+            // console.dir(this);
+            this.classList.add('box2');
+            var _this = this;
+            
+            // setTimeout(function(){
+            //     // console.log(this) 报错这里的this 指向window 
+                
+            //     _this.classList.remove('box2');
+            // },1000)
+            // 解决先存储一个变量 或者es6箭头函数
+            setTimeout(() => {
+                console.log(this) //指向div这个元素
+                this.classList.remove('box2');
+            }, 1000);
+        }
+    </script>
+</body>
+</html>

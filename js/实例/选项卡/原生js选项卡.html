@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            padding: 50px;
+        }
+
+        #box input {
+            width: 80px;
+            height: 40px;
+        }
+
+        #box .active {
+            background: red;
+        }
+
+        #box .con {
+            width: 400px;
+            height: 400px;
+            border: 1px solid #000;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div id="box">
+            <input class="active" type="button" name="" id="" value="新闻" />
+            <input type="button" name="" id="" value="体育" />
+            <input type="button" name="" id="" value="娱乐" />
+            <input type="button" name="" id="" value="教育" />
+            <div class="con" style="display: block;">
+                新闻
+            </div>
+            <div class="con">
+                体育
+            </div>
+            <div class="con">
+                娱乐
+            </div>
+            <div class="con">
+                教育
+            </div>
+        </div>
+    </div>
+    <script>
+        (() => {
+            var oBox = document.getElementById('box');
+            var aInputs = oBox.getElementsByTagName('input');//通过标签名查找元素
+            var aDivs = oBox.getElementsByClassName('con');//通过类名查找元素
+            for(var i =0;i<aInputs.length;i++){
+                aInputs[i].index=i;
+                aInputs[i].onclick=function(){
+                    for(var i =0; i<aInputs.length;i++){
+                        aInputs[i].className='';
+                        aDivs[i].style.display='none';
+                    }
+                    this.className='active';
+                    aDivs[this.index].style.display='block';
+                }
+            }
+        })()
+    </script>
+</body>
+
+</html>

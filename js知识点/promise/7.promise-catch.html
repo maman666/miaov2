@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+	<script type="text/javascript">
+
+		new Promise( (resolve, reject) => {
+			resolve();
+			// reject('第一步错误');
+		} )
+		.then(() => {
+			// console.log('登录成功')
+			return new Promise( (resolve, reject) => {
+				reject('登录失败');
+			} )
+		})
+		.then(() => {
+			console.log('是管理员')
+		})
+		.then(() => {
+			console.log('拿到资源')
+		}).catch(err => {
+			console.log(err);
+		}).then(() => {
+			console.log('catch以后')
+		});
+
+
+	</script>
+
+</body>
+</html>

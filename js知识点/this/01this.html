@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <div id="box" onclick="console.log( this )" >div</div> -->
+	<div id="box" onclick="( (function(){console.log( this )})() )" >div</div> <!-- 行间处理函数的this指向window -->
+   <script>
+        console.log(this);//全局环境的this指向Window
+       var box = document.getElementById('box');
+        box.onclick=function(){
+            console.log(this);// 事件处理函数中的 this, 该事件由谁触发,this指的就是谁
+        }
+      
+   </script>
+</body>
+</html>

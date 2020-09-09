@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		.box {
+			width: 100px;
+			height: 100px;
+			background: red;
+		}
+	</style>
+</head>
+<body>
+
+	<button>按钮</button>
+	<div class="box"></div>
+
+	<script type="text/javascript">
+		
+		/**
+		 * 异步
+		 * 	js: 单线程
+		 * 		线程：游戏中的任务线
+		 *
+		 *  一个主要的任务流程，处理我们的js程序
+		 *
+		 * 把一些耗时的事情通过新开线程的方式来实现
+		 *
+		 * 我们把这些任务称为：异步任务
+		 *
+		 * 	- setTimeout
+		 * 	- setInterval
+		 * 	- ajax
+		 */
+		
+		// var a = 1;
+		// alert(1);
+		// console.log(a);
+
+		var btn = document.querySelector('button');
+		var div = document.querySelector('div');
+
+		btn.onclick = function() {
+			var xhr = new XMLHttpRequest();
+
+			xhr.onload = function() {
+				console.log(this.responseText);
+			}
+
+			xhr.open('get', 'http://localhost:7777/', true);
+			// xhr.open('get', 'http://localhost:7777/', false);
+			// true : 异步，ajax的事情还没有处理完成的时候，我们点击div，是可以立马变色，ajax的事情并不影响当前页面中其他的效果
+			// false : 同步，当前线程直接处理
+
+			xhr.send();
+
+			console.log(1)
+		}
+
+		div.onclick = function() {
+			this.style.background = 'green';
+		}
+
+	</script>
+
+</body>
+</html>

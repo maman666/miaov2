@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+	<script type="text/javascript">
+
+
+
+		// Promise.reject().then(() => {
+		// 	console.log(1)
+		// },() => {
+		// 	console.log(2)
+		// })
+
+
+
+		// Promise.resolve(1).then(v => {
+		// 	console.log(v)
+		// });
+
+		// Promise.resolve( new Promise((resolve, reject) => {
+		// 	reject('错误')
+		// }) ).then(v => {
+		// 	console.log(v)
+		// }, err => {
+		// 	console.log(err)
+		// })
+
+		Promise.resolve({
+			then() {
+				console.log('then');
+				return Promise.resolve('miaov')
+			}
+		}).then( v => {
+			console.log('v')
+		}, err => {
+			console.log(err)
+		} )
+	</script>
+
+</body>
+</html>

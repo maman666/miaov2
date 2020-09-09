@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<ul id="ul">
+        <li>00</li>
+		<li>11</li>
+		<li>22</li>
+        <li>33</li>
+        <li>44</li>
+	</ul>
+<script type="text/javascript">
+	/*
+		找到某个元素的下个兄弟节点：
+			nextElementSibling
+			
+		找到某个元素的上个兄弟节点：
+			previousElementSibling
+	*/
+
+    /*
+		某个元素下个第一个子节点：
+			firstElementChild
+		某个元素下个最后一个子节点：
+			lastElementChild
+	*/
+	var ul = document.getElementById('ul');
+	var alis = ul.children;
+    var first = ul.firstElementChild;
+    var last = ul.lastElementChild;
+
+	alis[0].nextElementSibling.style.background = 'red';
+	alis[1].previousElementSibling.style.background = 'yellow';
+    first.style.background='#58bc58';
+    last.style.background = 'blue'
+	//console.log(alis[1].previousElementSibling.previousElementSibling)
+	
+	//console.log(alis[0].nextElementSibling.nextElementSibling.nextElementSibling)
+	
+</script>
+</body>
+</html>

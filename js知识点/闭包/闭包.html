@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    <script type="text/javascript">
+    /**
+     * 闭包:函数嵌套函数,内部函数可以引用外部函数的参数和变量,参数和变量不会被垃圾机制所回收
+     * js中的垃圾回收机制 function aaa(){var a = 666} aaa() 函数的变量没有用到 会被垃圾回收机制所回收 
+     * 好处:
+     *     1.希望变量长期驻扎在内存当中
+     *     2.避免全局变量的污染
+     *     3.私有成员的存在
+     *
+     * 用法:
+     *     1.模块化代码
+     *     2.在循环中找到对应元素的索引
+     *
+     * 注意的问题
+     * ie下会引发内存泄漏(一直开着浏览器的时候不会释放内存(造成内存泄漏),关闭的时候才会)
+     */
+    
+    // function aaa(){
+    //     var a =1; //局部变量
+    //     a++;
+    //     alert(a)
+    // }
+    // aaa();//2 //js中的垃圾回收机制把变量用完回收了,每次都重新执行,闭包可以解决
+    // aaa();//2
+    // function aaa(){
+    //     var a =1;
+    //     return function (){
+    //         a++;
+    //         alert(a)
+    //     }
+    // }
+    // b = aaa();
+    // console.log(b) //返回函数体
+    // b();//2
+    // b();//3
+    
+    //函数表达式写法
+    // var aaa = (function(){
+    //     var a = 1;
+    //     return function(){
+    //         a++;
+    //         alert(a)
+    //     }
+    // })()
+    // aaa();//2
+    // aaa();//3
+    
+    // 模块化写法
+    var aaa = (function(){
+        var a = 1;
+        function bbb(){
+            a++;
+            alert(a)
+        }
+        function ccc(){
+            a++;
+            alert(a);
+        }
+        return {
+            b:bbb,
+            c:ccc
+        }
+    })()
+    aaa.b();//2
+    aaa.c();//3
+
+    </script>
+    </body>
+</html>

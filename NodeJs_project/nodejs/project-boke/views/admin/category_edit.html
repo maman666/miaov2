@@ -1,0 +1,24 @@
+
+
+<!-- 实现对重复模板的继承 -->
+
+{% extends 'layout.html' %}
+
+<!-- 这里的内容有变化，可以用占位block块解决 相当于面向对象 继承 重写 -->
+{% block main %}
+<!-- 路径导航（面包屑导航） -->
+<ol class="breadcrumb">
+    <li><a href="/admin">管理首页</a></li>
+    <li><span>分类编辑</span></li>
+</ol>
+
+<h3>分类编辑</h3>
+<form role="form" method="post">
+    <div class="form-group">
+      <label for="name">分类名称</label>
+      <input type="text" value="{{category.name}}" class="form-control" id="name" placeholder="请输入分类名称" name="name"/>
+    </div>
+    <button type="submit" class="btn btn-default">提交</button>
+  </form>
+  
+{% endblock %}

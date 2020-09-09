@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            声明式渲染的理解
+                1.DOM状态只是数据状态的一个映射
+                2.所有逻辑尽可能在状态层面去进行
+                3.当状态改变时,view会被框架自动更新到合理的状态
+        */
+
+        var arr =[1,2,3,4];
+        // 把数组中每一个属性X2，存在数组中
+
+        // 命令式
+        var newArr=[];
+        for(var i =0; i<arr.length; i++){
+            newArr.push(arr[i]*2)
+        }
+        console.log(newArr);
+
+        //声明式
+        var newArr2=arr.map(item=>item*2);
+        console.log(newArr2)
+    </script>
+</body>     
+</html>
