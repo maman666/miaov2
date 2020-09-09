@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <script src="js/mui.min.js"></script>
+    <link href="css/mui.min.css" rel="stylesheet"/>
+	<style>
+		#imglist img{width:100%}
+	</style>
+    <script type="text/javascript" charset="utf-8">
+      	mui.init();
+		
+		
+    </script>
+</head>
+<body>
+	<h1>HTML5+ Runtime测试</h1>
+	<ul class="mui-table-view">
+		<li class="mui-table-view-cell mui-media" id="goCamera">
+			<span class="mui-media-object mui-pull-left mui-icon mui-icon-camera"></span>
+			<div class="mui-media-body">
+				摄像头
+				<p class='mui-ellipsis'>拍照、录像、扫码等功能</p>
+			</div>
+		</li>
+		<li class="mui-table-view-cell mui-media" id="btnSpeech">
+			<span class="mui-media-object mui-pull-left mui-icon mui-icon-mic"></span>
+			<div class="mui-media-body">
+				语音识别
+				<p class='mui-ellipsis'>识别中文、英文、粤语</p>
+			</div>
+		</li>
+		<li class="mui-table-view-cell mui-media">
+			<input type="search" id="keyword"/>
+		</li>
+		<li class="mui-table-view-cell mui-media" id="btnMap">
+			<span class="mui-media-object mui-pull-left mui-icon mui-icon-map"></span>
+			<div class="mui-media-body">
+				地图Map
+				<p class='mui-ellipsis'>百度、高德、腾讯</p>
+			</div>
+		</li>
+		<li class="mui-table-view-cell mui-media" id="btnShare">
+			<span class="mui-media-object mui-pull-left mui-icon mui-icon-pengyouquan"></span>
+			<div class="mui-media-body">
+				分享
+				<p class='mui-ellipsis'>微信、QQ、微博、朋友圈</p>
+			</div>
+		</li>
+		<li class="mui-table-view-cell mui-media" id="btnfingerprint">
+			<span class="mui-media-object mui-pull-left mui-icon mui-icon-pengyouquan"></span>
+			<div class="mui-media-body">
+				指纹
+				<p class='mui-ellipsis'>用于支付、解锁等</p>
+			</div>
+		</li>
+		<li class="mui-table-view-cell mui-media" id="btnLogin">
+			<span class="mui-media-object mui-pull-left mui-icon mui-icon-pengyouquan"></span>
+			<div class="mui-media-body">
+				第三方授权登录
+				<p class='mui-ellipsis'>QQ、微信等</p>
+			</div>
+		</li>
+		
+		<li class="mui-table-view-cell mui-media" id="btnPayment">
+			<span class="mui-media-object mui-pull-left mui-icon mui-icon-pengyouquan"></span>
+			<div class="mui-media-body">
+				支付
+				<p class='mui-ellipsis'>微信、支付宝</p>
+			</div>
+		</li>
+	</ul>
+	
+</div>
+	<script>
+		let goCamera = document.querySelector('#goCamera');
+		let btnSpeech = document.querySelector('#btnSpeech');
+		let keyword = document.querySelector('#keyword');
+		let btnMap = document.querySelector('#btnMap');
+		let btnShare = document.querySelector('#btnShare');
+		let btnfingerprint = document.querySelector('#btnfingerprint');
+		let btnLogin = document.querySelector('#btnLogin');
+		let btnPayment = document.querySelector('#btnPayment');
+		
+		goCamera.onclick = ()=>{
+			// 创建webview
+			// let wvCamera = plus.webview.create( 'html/camera.html', 'pageCamera');
+			// 显示
+			// plus.webview.show( wvCamera);
+			
+			plus.webview.open('html/camera.html', 'pageCamera',{},'fade-in')
+		}
+		
+		// 语音识别
+		btnSpeech.onclick = ()=>{
+			plus.speech.startRecognize({
+				engine:'iFly',
+				lang:'zh-henanese',
+				timeout:'3000',
+				nbest:3
+			},(txt)=>{
+				// plus.nativeUI.alert(txt);
+				keyword.value = txt;
+			})
+		}
+		
+		// 地图
+		btnMap.onclick = ()=>{
+			plus.webview.open('html/map.html', 'pageMap',{},'fade-in')
+		}
+		
+		
+		// 分享
+		btnShare.onclick = ()=>{
+			plus.share.getServices((services)=>{
+				console.log(services);
+				
+				let buttons = services.map(item=>{
+					return {
+						title:item.description
+					}
+				})
+				plus.nativeUI.actionSheet({
+					title:"分享到",
+					cancel:"取消",
+					buttons,
+				}, (e)=>{
+					let idx = e.index-1;
+					console.log('分享成功'+e.index);
+					let currentService = services[idx]
+					if(!currentService.authenticated){
+						currentService.authorize((service)=>{
+							console.log('services:',service)
+							
+							service.send({content:'时间过得真快，我们1811班又准备出去拿高薪了'})
+						});
+					}else{
+						
+						currentService.send({content:'时间过得真快，又准备出去拿高薪了'})
+					}
+				});
+			});
+		}
+		
+		// 指纹
+		btnfingerprint.onclick = ()=>{
+			let support = plus.fingerprint.isSupport();
+			
+			if(support){
+				if(plus.fingerprint.isEnrolledFingerprints()){
+					plus.fingerprint.authenticate(()=>{
+						plus.nativeUI.alert('支付成功')
+					}, ()=>{
+						plus.nativeUI.alert('你的手指太烂了，请更换手指')
+					})
+				}else{
+					plus.nativeUI.alert('请先录入指纹')
+				}
+			}else{
+				plus.nativeUI.alert('你的手机太烂，赶紧更换')
+			}
+		}
+		
+		// 第三方授权登录
+		btnLogin.onclick = ()=>{
+			plus.webview.open('html/login.html', 'pageLogin',{},'fade-in')
+		}
+		
+		// 支付
+		btnPayment.onclick = ()=>{
+			plus.webview.open('html/payment.html', 'pagePayment',{},'fade-in')
+		}
+	</script>
+</body>
+</html>

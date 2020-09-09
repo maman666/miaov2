@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <style>
+        .hidden-input {
+    opacity: 0;
+    position: absolute;
+    z-index: -1;
+}
+
+input[type=checkbox]+span {
+    /* your style goes here */
+    display: inline-block;
+    height: 1em;
+    width: 1em;
+    border-radius: 4px;
+    background-color: gray;        
+}
+
+/* active style goes here */
+input[type=checkbox]:checked+span {
+    background-color: red;
+}
+    </style>
+    <body>
+        <label>
+    <input type="checkbox" class="hidden-input" />
+    <span class="your style about checkbox"></span>
+    记住我
+</label>
+
+    </body>
+</html>
