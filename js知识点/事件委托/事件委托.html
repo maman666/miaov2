@@ -2,6 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
+       
     </head>
     <script type="text/javascript">
     /**
@@ -25,9 +26,9 @@
         // }
         
         //事件委托
-        // oUl.onclick = function(){
-        //     alert(666)
-        // }
+        oUl.onclick = function(){
+            alert(666)
+        }
         
 
 
@@ -41,22 +42,22 @@
         // }
         
         //事件委托
-        oUl.onmouseover = function(ev){
-            var ev = ev || window.event;
-            var target = ev.target || ev.srcElement;
-            console.log(target.nodeName)
-            if(target.nodeName.toLowerCase()=='li'){
-                target.style.background = 'red';
-            }
+        // oUl.onmouseover = function(ev){
+        //     var ev = ev || window.event;
+        //     var target = ev.target || ev.srcElement;
+        //     console.log(target.nodeName)
+        //     if(target.nodeName.toLowerCase()=='li'){
+        //         target.style.background = 'red';
+        //     }
             
-        } 
-        oUl.onmouseout = function(ev){
-            var ev = ev || window.event;
-            var target = ev.target || ev.srcElement;
-            if(target.nodeName.toLowerCase()=='li'){
-                target.style.background = '';
-            }
-        } 
+        // } 
+        // oUl.onmouseout = function(ev){
+        //     var ev = ev || window.event;
+        //     var target = ev.target || ev.srcElement;
+        //     if(target.nodeName.toLowerCase()=='li'){
+        //         target.style.background = '';
+        //     }
+        // } 
     }
     </script>
     <body>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    <div id="box"></div>
+
+    </body>
+    <script type="text/javascript">
+        window.onload = function(){
+            function getDateStr(seconds){
+                var date = new Date(seconds*1000)
+                var year = date.getFullYear();
+                var month = date.getMonth() + 1;
+                var day = date.getDate();
+                var hour = date.getHours() < 10 ? "0" + date.getHours() : date.getHours();
+                var minute = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
+                var second = date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds();
+                var currentTime = year + "-" + month + "-" + day + "  " + hour + ":" + minute + ":" + second;
+             return currentTime
+            }
+            console.log(getDateStr(1600676630905))
+        }
+    </script>
+</html>
