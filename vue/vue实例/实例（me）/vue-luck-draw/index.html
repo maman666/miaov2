@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* #app {
+            position: relative;
+            width: 310px;
+            height: 310px;
+        } */
+
+        .luck-draw {
+            width: 540px;
+            height: 540px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%)
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+    <!-- 大转盘抽奖 -->
+        <lucky-wheel class="luck-draw" ref="LuckyWheel" :default-style="{
+            fontColor: '#303133',
+            fontSize: '20px',
+            gutter: '2px'
+        }" :blocks="[
+            { padding: '2px', background: '#fa3e3f' },
+            { padding: '20px', background: '#f9d400' },
+            { padding: '2px', background: '#e76f51' },
+        ]" :prizes="prizes" :buttons="[{
+            radius: '60px',
+            pointer:true,
+            imgs: [{ src: './img/cjl/button.png', width: '105%', top: '-45%' }]
+        }]" @start="startCallBack" @end="endCallBack"></lucky-wheel>
+
+    </div>
+    <script src="./js/vue.js"></script>
+    <script src="./js/index.umd.js"></script>
+    <script>
+        //数据
+        let data = {
+            prizes: []
+        }
+        let vm = new Vue({
+            el: "#app",
+            data,
+            mounted() {
+                this.getPrizesList()
+            },
+            methods: {
+                getPrizesList() {
+                    this.prizes = []
+                    let dataList = [
+                        { name: '谢谢参与', img: './img/cjl/00.png', color: '#d7d7d7' },
+                        { name: '礼物', img: './img/cjl/01.png', color: '#fef43e' },
+                        { name: '抽奖券', img: './img/cjl/02.png', color: '#ef7683' },
+                        { name: '元宝', img: './img/cjl/03.png', color: '#d7d7d7' },
+                        { name: '元宝', img: './img/cjl/04.png', color: '#fef43e' },
+                        { name: '抽奖券', img: './img/cjl/02.png', color: '#ef7683' },
+                        { name: '元宝', img: './img/cjl/06.png', color: '#d7d7d7' },
+                        { name: '抽奖券', img: './img/cjl/02.png', color: '#fef43e' },
+                    ]
+                    dataList.forEach((item, index) => {
+                        this.prizes.push({
+                            name: item.name,
+                            background: item.color,
+                            fonts: [{ text: item.name, top: '10%' }],
+                            imgs: [{ src: item.img, width: '30%', top: '28%' }],
+                        })
+                    })
+                    // console.log('prizes',this.prizes)
+                },
+                startCallBack() {
+                    this.$refs.LuckyWheel.play()
+                    // console.log(Math.random() * 8 >> 0)
+                    setTimeout(() => {
+                        //模拟接口调用stop让他停止
+                        this.$refs.LuckyWheel.stop(Math.random() * 8 >> 0)
+                    }, 3000)
+                },
+                endCallBack(prize) {
+                    //结束触发end回调函数 拿到中将参数prize
+                    console.log('prizeItem:',prize)
+                    alert(`恭喜你获得${prize.name}`)
+                },
+            }
+        })
+    </script>
+</body>
+
+</html>

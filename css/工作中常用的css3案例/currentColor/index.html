@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="./scss/index.css" />
+    </head>
+    <body>
+    <div class="good">请给我点赞</div>
+    </body>
+    <script type="text/javascript">
+       
+        let goodBtn = document.querySelector('.good');
+        console.log(goodBtn)
+        goodBtn.addEventListener('click',()=>{
+            if(goodBtn.classList.contains('good-click')){
+                goodBtn.classList.remove(['good-click'],['good-font']);
+                return;
+            }
+            goodBtn.classList.add(['good-click'],['good-font'])
+        })
+    </script>
+</html>

@@ -1,0 +1,40 @@
+body {
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 20px;
+  margin: 0;
+
+  .image-slider {
+    position: relative;
+
+    img {
+      display: block;
+      width: 520px;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    .before-container {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 50%;
+      overflow: hidden;
+    }
+
+    .handler {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      display: block;
+      width: 4px;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      transform: translateX(-50%);
+      cursor: ew-resize;
+    }
+  }
+}

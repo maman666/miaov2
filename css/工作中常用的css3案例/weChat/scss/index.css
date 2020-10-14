@@ -1,0 +1,42 @@
+body {
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 20px;
+  margin: 0; }
+  body .chat-box {
+    color: #faae43;
+    max-width: 200px;
+    filter: drop-shadow(0 2px 4px rgba(250, 174, 67, 0.5));
+    padding: 10px;
+    border-radius: 4px;
+    position: relative;
+    border: 1px solid #ffc16b;
+    background: #fff9ed; }
+    body .chat-box::before {
+      position: absolute;
+      left: -8px;
+      top: 20px;
+      content: "";
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 8px 8px 8px 0;
+      border-color: transparent #fff9ed transparent transparent; }
+    body .chat-box::after {
+      position: absolute;
+      content: "";
+      left: -7px;
+      top: 22px;
+      width: 10px;
+      height: 10px;
+      border-width: 1px;
+      border-style: solid;
+      border-color: transparent;
+      border-top-color: inherit;
+      border-left-color: inherit;
+      border-top-left-radius: 3px;
+      transform: rotate(-45deg); }
+
+/*# sourceMappingURL=index.css.map */

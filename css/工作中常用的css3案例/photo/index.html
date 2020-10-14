@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="./scss/index.css" />
+    </head>
+    <body>
+      <div class="image-slider">
+        <div class="before-container">
+          <img src="https://img3.doubanio.com/view/photo/l/public/p2622600072.webp" alt="before">
+        </div>
+        <img src="https://img9.doubanio.com/view/photo/l/public/p2380745925.webp" alt="after">
+        <span class="handler"></span>
+      </div>
+
+      <script type="text/javascript">
+        const imageSlider = document.querySelector(".image-slider");
+        const beforeContainer = document.querySelector(".before-container");
+        const handler = document.querySelector(".handler");
+
+        let marginX;
+
+        handler.onmousedown = (e) => {
+          marginX = e.pageX - handler.offsetLeft;
+          window.addEventListener('mousemove', moveHandler)
+        };
+
+        window.onmouseup = (e) => {
+          window.removeEventListener('mousemove', moveHandler)
+        };
+
+
+        const moveHandler = e => {
+          const beforeWidth = e.pageX - marginX;
+          const imageSliderWidth = imageSlider.offsetWidth;
+          console.log(beforeWidth, imageSliderWidth)
+
+          if (beforeWidth >= 0 && beforeWidth <= imageSliderWidth) {
+            handler.style.left = beforeWidth + 'px';
+            beforeContainer.style.width = beforeWidth + 'px';
+          }
+        }
+      </script>
+    </body>
+ 
+</html>

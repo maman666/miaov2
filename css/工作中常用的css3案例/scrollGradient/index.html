@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="./scss/index.css" />
+    </head>
+    <body>
+      <div class="content-wrapper">
+        <header>目录</header>
+        <div class="list-wrapper">
+          <ul>
+            <li>如何长高</li>
+            <li>如何变得富有</li>
+            <li>如何变得好看</li>
+            <li>如何不被生活压垮</li>
+            <li>如何获得点赞</li>
+            <li>如何写好文章</li>
+            <li>如何变强</li>
+            <li>如何平衡生活</li>
+            <li>如何不加班</li>
+            <li>如何对别人心怀善意</li>
+            <li>如何长高</li>
+            <li>如何变得富有</li>
+            <li>如何变得好看</li>
+            <li>如何不被生活压垮</li>
+            <li>如何获得点赞</li>
+            <li>如何写好文章</li>
+            <li>如何变强</li>
+            <li>如何平衡生活</li>
+            <li>如何不加班</li>
+            <li>如何对别人心怀善意</li>
+          </ul>
+        </div>
+      </div>
+
+      <script type="text/javascript">
+        const listWrapper = document.querySelector(".list-wrapper");
+        const ul = document.querySelector("ul");
+
+        const onScroll = (e) => {
+          if (e.target.scrollTop > 0) {
+            listWrapper.classList.add("top-gradient");
+          } else {
+            listWrapper.classList.remove("top-gradient");
+          }
+
+          if (e.target.scrollHeight - e.target.scrollTop !== ul.offsetHeight) {
+            listWrapper.classList.add("bottom-gradient");
+          } else {
+            listWrapper.classList.remove("bottom-gradient");
+          }
+        };
+
+        ul.addEventListener("scroll", onScroll);
+
+      </script>
+    </body>
+ 
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="./scss/index.css" />
+    </head>
+    <body>
+          <div id="box">I am vortesnail, now i try to draw a dashed border box.</div>
+          <div class="range-bar">
+            <input type="range" id="control-box-width" min="100" max="400">
+            <label for="control-box-width">box 宽度</label>
+          </div>
+    </body>
+    <script type="text/javascript">
+        const rangerBar = document.getElementById('control-box-width')
+        const box = document.getElementById('box')
+
+        rangerBar.oninput = function(e){
+          box.style.width = e.target.value + 'px'
+    }
+    </script>
+</html>
