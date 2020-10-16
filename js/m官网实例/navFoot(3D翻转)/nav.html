@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css">
+            .nav{margin: 0;padding: 50px;}
+            .nav li{float: left;list-style: none; padding:0 15px; -webkit-perspective: 100px;}
+            .nav a{float:left;position: relative; font:14px/20px "宋体"; text-decoration: none; -webkit-transform-style: preserve-3d;transition: .5s;-webkit-transform-origin: center center -10px;}
+            .nav span{float:left;  width: 60px; text-align: center;-webkit-backface-visibility: hidden;}
+            .nav span:nth-of-type(2){
+                position:absolute;
+                left:0;
+                top:-20px;
+                background:#ccc;
+                -webkit-transform-origin:bottom ;
+                -webkit-transform:rotateX(90deg) ;
+            }
+            .nav a:hover{-webkit-transform: rotateX(-90deg);}
+        </style>
+    </head>
+    <body>
+        <ul class="nav">
+            <li>
+                <a href="javascript:;">
+                    <span>选项一</span>
+                    <span>翻转1</span>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <span>选项二</span>
+                    <span>翻转2</span>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <span>选项三</span>
+                    <span>翻转3</span>
+                </a>
+            </li>
+        </ul>
+    </body>
+</html>

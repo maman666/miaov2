@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<style>
+*{ margin:0; padding:0;}
+li{ float:left; margin-left:20px;}
+div{ display:none; width: 0; height: 0;}
+</style>
+<script type="text/javascript" src="./sea.js"></script>
+<script type="text/javascript" src="./move.js"></script>
+<script>
+seajs.use('./main.js')
+
+</script>
+</head>
+
+<body>
+<ul>
+    <li><a href="javascript:;" data-hash="index">首页</a></li>
+    <li><a href="javascript:;" data-hash="student">学员</a></li>
+    <li><a href="javascript:;" data-hash="message">留言</a></li>
+</ul>
+<br>
+<div data-hash="index" style="background:red">首页的内容</div>
+<div data-hash="student" style="background:yellow">学员的内容</div>
+<div data-hash="message" style="background:blue">留言的内容</div>
+</body>
+</html>

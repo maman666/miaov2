@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css">
+            *{padding: 0;margin:0;}
+            li{float:left;margin-left:20px;list-style: none;}
+            div{display: none;}
+        </style>
+    </head>
+    <script type="text/javascript">
+    window.onload = function(){
+        var aA = document.querySelectorAll('a');
+        var aDiv = document.querySelectorAll('div');
+        for(var i =0; i<aA.length; i++){
+            // aA[i].index = i;//自定义属性
+            aA[i].onclick = function(){
+                var hash = this.dataset.hash;
+                //这里设置hash值(刷新页面还是这个页面)
+                window.location.hash = hash;
+                // console.log(hash)
+                for(var i =0; i<aDiv.length; i++){
+                    // console.log(aDiv[i])
+                    aDiv[i].style.display='none';
+                    if(hash==aDiv[i].dataset.hash){
+                        aDiv[i].style.display='block';
+                    }
+
+              }
+              
+            }   
+        }
+        //解决点击回车无法刷新地问题（hash问题）
+        //window.onhashchange 事件只要监听到hash改变就会触发
+        window.onhashchange = function(){
+            window.location.reload();
+        }
+        var firstHash = window.location.hash.substring(1) || 'index';
+        // console.log(firstHash)
+        for(var i =0; i<aDiv.length; i++){
+            if(firstHash==aDiv[i].dataset.hash){
+                aDiv[i].style.display='block';
+            }
+        }
+        
+    }
+    </script>
+    <body>
+    <ul>
+        <li><a href="javascript:;" data-hash="index">首页</a></li>
+        <li><a href="javascript:;" data-hash="student">学生</a></li>
+        <li><a href="javascript:;" data-hash="message">留言</a></li>
+    </ul>
+    <br/>
+    <div data-hash="index">首页地内容</div>
+    <div data-hash="student">学员地内容</div>
+    <div data-hash="message">留言地内容</div>
+    </body>
+</html>

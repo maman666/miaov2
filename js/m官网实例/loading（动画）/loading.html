@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+	<style type="text/css">
+	/*动画*/
+	@-webkit-keyframes move1{
+		0%{
+			top:0;
+		}
+		100%{
+			top:7px;
+		}
+	}
+
+	@-webkit-keyframes move2{
+		0%{
+			-webkit-transform:rotate(0deg);
+		}
+		100%{
+			-webkit-transform:rotate(-360deg);
+		}
+	}
+	@-webkit-keyframes move3{
+		0%{
+			-webkit-transform:rotate(0deg);
+		}
+		100%{
+			-webkit-transform:rotate(360deg);
+		}
+	}
+
+	@-webkit-keyframes move4{
+		0%{
+			-webkit-transform:scale(0.8); opacity: 0.5;
+		}
+		100%{
+			-webkit-transform:scale(1);opacity: 1;
+		}
+	}
+	/*alternate:轮流反向播放动画 infinite：无限循环 linear 线性播放*/
+
+	*{padding: 0;margin:0;}
+	#loading{width: 120px;height: 140px;position: fixed;left:calc(50% - 60px);top:calc(50% - 70px);}
+	#load{width: 120px;height: 100px;background:url(loding/loading3.png) no-repeat; position:absolute;top:0;left:0;-webkit-animation: .5s move1 infinite alternate linear;}
+	#loadIco1{width: 120px;height: 100px;position:absolute;left:0;top:0;background:url(loding/loading4.png) no-repeat;-webkit-animation: 1.2s move2 infinite linear;}
+	#loadIco2{width: 120px;height: 100px;position:absolute;left:0;top:0;background:url(loding/loading5.png) no-repeat;-webkit-animation: 1.2s move3 infinite linear;}
+	#loadtext{ width:120px;height:100px; position:absolute;left:0;top:0; text-align:center; line-height:100px; font:bold 16px/100px Arial; color:#f9725c;}
+	#loadShadow{width:100px;height:40px; position:absolute;left:10px; bottom:0; background:url(loding/loading2.png) no-repeat;-webkit-animation: .5s move4 infinite alternate linear;}
+	</style>
+</head>
+<body>
+	<div id="loading">
+		<div id="load">
+			<div id="loadIco1"></div>
+			<div id="loadIco2"></div>
+			<div id="loadtext">0%</div>
+		</div>
+		<div id="loadShadow"></div>
+	</div>
+	<script type="text/javascript">
+		var oloadtext=document.getElementById("loadtext");
+		var oload=document.getElementById("load");
+		var oloadIco1=document.getElementById("loadIco1");
+		var oloadIco2=document.getElementById("loadIco2");
+		var oloadShadow=document.getElementById("loadShadow");
+		var iLength=0;
+		var aUrl=["http://pic3.nipic.com/20090602/846299_152058002_2.jpg","http://pic12.nipic.com/20110212/2457331_151615433709_2.jpg","http://pic18.nipic.com/20111207/5252423_202255633000_2.jpg"];
+		for(var i=0; i<aUrl.length; i++){
+			var oImg = new Image();
+			oImg.index = i;
+			oImg.src = aUrl[i];
+			oImg.onload = function(){
+				iLength++;
+				oloadtext.innerHTML = parseInt(iLength/aUrl.length*100)+'%';
+				if(iLength==aUrl.length){
+					oload.style.WebkitAnimationPlayState="paused";	
+					oloadIco1.style.WebkitAnimationPlayState="paused";	
+					oloadIco2.style.WebkitAnimationPlayState="paused";
+					oloadShadow.style.WebkitAnimationPlayState="paused";
+				}
+			}
+			oImg.onerror = function(){
+				console.log(this.index+'出错了');
+				// iLength++;
+				// oloadtext.innerHTML = parseInt(iLength/aUrl.length*100)+'%';
+				// if(iLength==aUrl.length){
+				// 	oload.style.WebkitAnimationPlayState="paused";	
+				// 	oloadIco1.style.WebkitAnimationPlayState="paused";	
+				// 	oloadIco2.style.WebkitAnimationPlayState="paused";
+				// 	oloadShadow.style.WebkitAnimationPlayState="paused";
+				// }
+			}
+			// oImg.src = aUrl[i]
+		}
+	</script>
+</body>
+</html>
