@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <!-- 引入css库 -->
+        <!-- 在这里用link标签引入中文布局 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chinese-layout">
+        <!-- 在这里用link标签引入中文渐变色 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chinese-gradient">
+    </head>
+    <style type="text/css">
+    *{padding: 0;margin: 0;}
+    html,body{height: 100%;background: gray;}
+    /*1.css库布局*/
+    /*body{display: grid;grid:var(--居中);background: var(--霾灰);}
+    .center{grid-area: 中;width: 150px; height:150px;background:var(--胭脂粉);text-align:center;line-height: 150px;}*/
+    /*2.绝对定位实现*/
+    /*body{position: relative;}
+    .center{position:absolute;top:0;left: 0;bottom: 0;right: 0;width: 50%;height:26%;margin:auto;background:#fff;text-align:center;line-height: 1300%;}*/
+    /*3.绝对定位 + 负边距*/
+    /*body{position: relative;}
+    .center{position:absolute;top:50%;left: 50%;width: 300px;height:200px;margin-left:-150px;margin-top:-100px;background:#fff;text-align:center;line-height: 200px;}*/
+    /*4.绝对定位 + 平移*/
+    /*body{position: relative;}
+    .center{position:absolute;top:50%;left: 50%;padding:50px;transform:translate(-50%,-50%);background:#fff;text-align:center;}*/
+    /*5.网格 Grid 实现*/
+    /*body{display: grid; place-items: center;}
+    .center{background:#fff;padding:50px;text-align:center;}*/
+    /*6.Flex 弹性盒子*/
+    /*body{display: flex;}
+    .center{background:#fff;padding:50px;margin:auto;}*/
+    /*7.表格布局*/
+    /*body{width:100vw;height:100vh;display: table-cell; text-align:center;vertical-align: middle;}
+    .center{background:#fff;padding:50px;display:inline-block;}*/
+
+    </style>
+    <body>
+    <div class="center">居中显示</div>
+    </body>
+</html>
