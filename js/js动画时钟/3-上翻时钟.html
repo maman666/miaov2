@@ -60,7 +60,7 @@
 		<script type="text/javascript">
 			var divs = document.getElementsByTagName('div');
 			var imgs = document.querySelectorAll('li>img');
-			var old = getTime();
+			var old = getTime();//171038
 			//开始先调用一下，解决页面刚打开的时候时间延时显示的问题。
 			for(var i=0;i<divs.length;i++){
 				divs[i].getElementsByTagName('img')[0].src = 'img/'+old[i]+'.jpg';
@@ -123,11 +123,11 @@
 
 			function move(obj,attr,target,duration,callback){
 				var b = parseFloat(getComputedStyle(obj)[attr]);
-				var c = target - b;
-				var d = duration;
+				var c = target - b;//-170-0
+				var d = duration;//400
 				var now = new Date().getTime();
 				obj[attr] = setInterval(function(){
-					var t = new Date().getTime() - now;
+					var t = new Date().getTime() - now; //1604050070149
 					var value = b + c / d * t;
 					obj.style[attr] = value+"px";
 					if(t >= d){

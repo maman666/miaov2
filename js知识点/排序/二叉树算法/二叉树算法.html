@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    <script type="text/javascript">
+    /**
+     *  思路
+     *  1.确定根节点
+     *  2.比根节点小的在左边，比根节点大的在右边
+     *  3.每一层的父节点，比父节点小的在左边，大的在右边
+     *  4.学会断点调试
+     * 
+     */
+    /*
+        前序遍历，中序遍历，后序遍历的区别 （一切往左子树为主来看）
+            1.前序遍历：先访问当前节点，访问后才会访问左子树，在访问右子树
+            2.中序遍历：会访问当前左子树，访问后才会访问当前节点，在访问右子树
+            3.后序遍历：先访问左子树，在访问右子树，再去访问当前节点的值
+        
+        二叉树的节点查找（最大值，最小值，具体的值）
+     */
+    //面向对象写法 挂在属性和方法
+    function BinaryTree(){
+        var Node = function(key){
+            //节点父元素
+            this.key = key;
+            //节点的左箭头
+            this.left = null;
+            //节点右箭头
+            this.right = null;
+
+        }
+        //定义根节点
+        var root = null;
+        //插入新的节点函数
+        var insertNode = function(node,newNode){
+            if(newNode.key<node.key){
+                if(node.left===null){
+                    node.left = newNode
+                }else{
+                    //老节点不为空，继续往左边添加
+                    insertNode(node.left,newNode)
+                }
+            }else{
+                if(node.right === null){
+                    node.right = newNode
+                }else{
+                    //老节点不为空，继续往右边添加
+                    insertNode(node.right,newNode)
+                }
+            }
+        }
+        //用来插入节点的函数
+        this.insert = function(key){
+            //构造一个节点对象
+            var newNode = new Node(key);
+            if(root === null ){
+                //此时根节点为空，把插入的节点作为根节点
+                root = newNode;
+            }else{
+                //根据二叉树的排序特性 插入新的节点
+                insertNode(root,newNode);
+            }
+        }
+        /*
+                 遍历出来的数值是以升序排列
+            原理：
+                根节点往下推 左边有没有值 推到1 往上推3 右边有没有值（有）再看左边有没有值 推到4 往上推6 在往右边推到7
+                一切就是左边为主，往上推，在看右边值的左边，在往上推 
+         */
+        var inOrderTraverseNode = function(node,callback){
+            if(node !== null){
+                inOrderTraverseNode(node.left,callback);
+                callback(node.key);
+                inOrderTraverseNode(node.right,callback);
+            }
+        }
+        //添加中序遍历接口，实现获取节点
+        this.inOrderTraverse = function(callback){
+            //callback回调函数 就是当我们要输出某个节点的值的时候，让回调函数决定怎么输出来
+            inOrderTraverseNode(root,callback);
+        }
+
+        /*
+            1.使用前序遍历去复制一棵二叉树的效率是最高的（比重新去插入构造高出10倍左右）
+            原理：跟中序遍历差不多，唯一的差别就是 根节点往左推 只不过每到一个节点就会立马打印出来，不想中序遍历跑完左子节点 在往上推父节点 在往右推子节点
+         */
+        var preOrderTraverseNode = function(node,callback){
+            if(node !== null){
+                callback(node.key);
+                preOrderTraverseNode(node.left,callback);
+                preOrderTraverseNode(node.right,callback);
+            }
+        }
+        //添加前序遍历接口
+        this.preOrderTraverse = function(callback){
+            //callback回调函数 就是当我们要输出某个节点的值的时候，让回调函数决定怎么输出来
+            preOrderTraverseNode(root,callback);
+        }
+        /*
+            可以访问操作系统文件系统遍历之中
+            后序遍历：先访问左子树，在访问右子树，再去访问当前节点的值
+        */
+       var postOrderTraverseNode = function(node,callback){
+        if(node !== null){
+            postOrderTraverseNode(node.left,callback);
+            postOrderTraverseNode(node.right,callback);
+            callback(node.key);
+        }
+       }
+       //添加后序遍历接口
+        this.postOrderTraverse = function(callback){
+            //callback回调函数 就是当我们要输出某个节点的值的时候，让回调函数决定怎么输出来
+            postOrderTraverseNode(root,callback);
+        }
+
+        //遍历查找最小的值
+        var minNode = function(node){
+            if(node){
+                while(node && node.left !==null ){
+                    node = node.left;
+                }
+                return node.key;
+            }
+            return null;
+        }
+        //添加查找最小值接口
+        this.min = function(){
+            return minNode(root);
+        }
+
+        //遍历查找最大的值
+        var maxNode = function(node){
+            if(node){
+                while(node && node.right !== null){
+                    node = node.right;
+                }
+                return node.key;
+            }
+            return null;
+        }
+        //添加查找最大值接口
+        this.max = function(){
+            return maxNode(root);
+        }
+        //查找具体的值
+        var searchNode = function(node,key){
+            if(node === null){
+                return false;
+            }
+            //通过递归查找，递归算法不断地跑判断语句（node.key不断变化） 
+            if(key<node.key){
+                return searchNode(node.left,key)
+            }else if(key>node.key){
+                return searchNode(node.right,key)
+            }else{
+                return true;
+            }
+        }
+        //添加查找具体值接口
+        this.search = function(key){
+            return searchNode(root,key)
+        }
+
+        // 查找最小值，返回一个对象
+        var findMinNode = function(node){
+            if(node){
+                while(node && node.left !== null){
+                    node = node.left;
+                }
+                return node;
+            }
+            return null;
+        }
+
+        //删除子节点 node.left不断地变化（等递归完 在return出去）
+        var removeNode = function(node,key){
+            if(node==null){
+                return null;
+            }
+            if(key<node.key){
+                node.left = removeNode(node.left,key);
+                return node;
+            }else if(key>node.key){
+                node.right = removeNode(node.right,key);
+                return node;
+            }else{
+                //没有含子树
+                if(node.left===null && node.right===null){
+                    node = null;
+                    return null;
+                }
+                //含有一个子树
+                if(node.left===null){
+                    node = node.right;
+                    return node;
+                }else if(node.right === null){
+                    node = node.left;
+                    return node;
+                }
+                //含有两个子树
+                /*
+                    首先找到右子树地最小值，是一个对象（重要）
+                    把他地值赋给当前删除地值
+                    把右节点这个值删掉
+                    返回这个值对象
+                 */
+                var aux = findMinNode(node.right);
+                node.key = aux.key;
+                node.right = removeNode(node.right,aux.key);
+                return node;
+
+            }
+        }
+        //添加删除接口
+        this.remove = function(key){
+            root = removeNode(root,key);
+        }
+    }
+
+    //定义一个数组表示要插入的数值
+    var nodes= [8,3,10,1,6,14,4,7,13];
+    //构造BinaryTree对象
+    var binaryTree = new BinaryTree();
+    nodes.forEach(function(key){
+        //调用insert接口，往里面插入节点
+        binaryTree.insert(key);
+    })
+    var callback = function(key){
+        console.log(key)
+    }
+    //调用binaryTree.inOrderTraverse中序遍历接口 把callback传进去
+    // binaryTree.inOrderTraverse(callback)
+    // 调用binaryTree.preOrderTraverse前序遍历接口 把callback传进去
+    // binaryTree.preOrderTraverse(callback)
+    // 调用binaryTree.postOrderTraverse前序遍历接口 把callback传进去
+    // binaryTree.postOrderTraverse(callback)
+    // 调用最小值接口
+    // console.log(binaryTree.min());
+    // 调用最大值接口
+    // console.log(binaryTree.max());
+    // 调用查找具体值接口
+    // console.log(binaryTree.search(7)?'存在7':'不存在7');
+    // console.log(binaryTree.search(8)?'存在8':'不存在8');
+    //调用删除接口
+     binaryTree.remove(3)
+    </script>
+    </body>
+</html>
