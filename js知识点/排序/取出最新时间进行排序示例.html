@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    <script type="text/javascript">
+    var arr = [{
+        time:1606575934749,
+        id:1,
+        type:1
+    },{
+        time:1606575934753,
+        id:2,
+        type:1
+    },{
+        time:1606575934751,
+        id:3,
+        type:1
+    },{
+        time:1606575934751,
+        id:4,
+        type:2
+    }]
+    let timeArr = []
+    let newArr = arr.filter(item=>item.type===1)
+    newArr.map(item=>{
+        timeArr.push(item.time)
+    })
+   let sortTime =  timeArr.sort((n1,n2)=>n2-n1)
+   let filterArr= newArr.filter(item=>item.time===sortTime[0])
+
+   let arr2 = [{
+        time:1606575934751,
+        id:4,
+        type:2
+   }]
+   let filetrArrList = filterArr.concat(arr2)
+    console.log('filetrArrList',filetrArrList)
+    
+
+    </script>
+    </body>
+</html>
